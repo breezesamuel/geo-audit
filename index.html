@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 可见度体检 · 丙大山数据资产</title>
+<meta name="description" content="实测：网易、拼多多、哔哩哔哩官网 AI 可见度都只有 60 分。当客户在 AI 里问「哪家好」，AI 提不提你？19 家中国企业实测基准，1 元起查。">
+<link rel="canonical" href="https://breezesamuel.github.io/geo-audit/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "上海丙大山智能科技有限公司",
+      "url": "https://breezesamuel.github.io/geo-audit/",
+      "description": "企业官网 AI 可见度体检与整改服务",
+      "email": "460123249@qq.com"
+    },
+    {
+      "@type": "WebSite",
+      "name": "AI 可见度体检",
+      "url": "https://breezesamuel.github.io/geo-audit/",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "Service",
+      "name": "官网 AI 可见度体检",
+      "serviceType": "GEO 审计与整改",
+      "provider": { "@type": "Organization", "name": "上海丙大山智能科技有限公司" },
+      "areaServed": { "@type": "Country", "name": "CN" },
+      "offers": { "@type": "AggregateOffer", "lowPrice": "0", "highPrice": "2999", "priceCurrency": "CNY" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "大公司官网的 AI 可见度就很高吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不是。我们实测了 20 家知名中国企业官网，平均分只有 42.2 分，满分 100。网易、拼多多、哔哩哔哩官网都只有 60 分。AI 可见度低是普遍现象，不是小公司的问题。" }
+        },
+        {
+          "@type": "Question",
+          "name": "这个体检具体测什么？",
+          "acceptedAnswer": { "@type": "Answer", "text": "测 AI 抓取你网站的三件事：robots.txt 是否放行 AI 爬虫、是否有 JSON-LD 结构化数据让 AI 看得懂你是谁、是否有 FAQ 和 llms.txt 让 AI 抽得到你的问答。全部基于公开文件，不抓取个人信息。" }
+        },
+        {
+          "@type": "Question",
+          "name": "1 块钱的报告和 99 块钱的有什么区别？",
+          "acceptedAnswer": { "@type": "Answer", "text": "1 元给 8 个维度的分数和 3 条建议。99 元给完整诊断、可直接粘贴的 JSON-LD 代码、llms.txt 和 robots.txt 定制内容、按投入产出排序的整改排期表，以及 30 天内 3 次免费复测。差价 98 元，买的是不用自己想怎么改。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --line:#21262d; --fg:#e6edf3;
+  --dim:#8b949e; --bad:#f85149; --ok:#3fb950; --warn:#d29922; --hi:#58a6ff;
+  --accent:#1f6feb;
+}
+@media (prefers-color-scheme:light){
+  :root{ --bg:#fff; --card:#f6f8fa; --line:#d0d7de; --fg:#1f2328; --dim:#59636e; --hi:#0969da; }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.7 -apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+a{color:var(--hi)}
+header{padding:56px 0 32px;border-bottom:1px solid var(--line)}
+h1{font-size:34px;margin:0 0 12px;line-height:1.3;letter-spacing:-.5px}
+h2{font-size:22px;margin:44px 0 16px;padding-top:20px;border-top:1px solid var(--line)}
+.sub{color:var(--dim);font-size:17px;margin:0}
+.hero-score{display:flex;gap:14px;flex-wrap:wrap;margin:28px 0}
+.stat{flex:1;min-width:130px;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:16px}
+.stat b{display:block;font-size:30px;line-height:1.2}
+.stat span{color:var(--dim);font-size:13px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--dim);font-weight:600;font-size:13px}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;min-width:70px}
+.bar i{display:block;height:100%;background:var(--bad)}
+.bar i.mid{background:var(--warn)}
+.bar i.good{background:var(--ok)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:18px;margin:14px 0}
+.tier{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  border-bottom:1px solid var(--line);padding:13px 0}
+.tier:last-child{border:0}
+.price{font-size:24px;font-weight:700;color:var(--ok);white-space:nowrap}
+.price small{font-size:13px;color:var(--dim);font-weight:400}
+.gives{color:var(--dim);font-size:14px;margin:5px 0 0}
+input,button{font:inherit;padding:12px 14px;border-radius:8px;border:1px solid var(--line)}
+input{width:100%;background:var(--bg);color:var(--fg);margin:10px 0}
+button{background:var(--accent);color:#fff;border:0;cursor:pointer;font-weight:600;width:100%}
+button:disabled{opacity:.5;cursor:not-allowed}
+#out{margin-top:18px;white-space:pre-wrap;font-size:14px;word-break:break-all}
+.note{background:rgba(248,81,73,.08);border-left:3px solid var(--bad);
+  padding:12px 16px;border-radius:0 8px 8px 0;margin:18px 0;font-size:15px}
+.ok-box{background:rgba(63,185,80,.08);border-left:3px solid var(--ok);
+  padding:12px 16px;border-radius:0 8px 8px 0;margin:18px 0}
+footer{margin:56px 0 0;padding:24px 0 48px;border-top:1px solid var(--line);
+  color:var(--dim);font-size:13px}
+code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>你的官网，AI 看得见吗？</h1>
+  <p class="sub">当客户在 DeepSeek / Kimi / 豆包 / ChatGPT 里问「上海哪家口腔诊所好」，
+  AI 会不会提到你？—— 这是 1 块钱就能知道的事。</p>
+
+  <div class="hero-score">
+    <div class="stat"><b>42.2</b><span>20 家知名企业官网平均分（满分 100）</span></div>
+    <div class="stat"><b>60</b><span>网易 / 拼多多 / 哔哩哔哩 官网得分</span></div>
+    <div class="stat"><b>0</b><span>19 家实测中明确禁止 AI 爬虫的数量</span></div>
+    <div class="stat"><b>15/19</b><span>缺少结构化数据，AI 认不出你是谁</span></div>
+  </div>
+
+  <div class="note">
+    <b>先说清楚：这不是小公司的问题。</b>
+    我们用同一套脚本扫了小米、华为、网易、携程、美的、蔚来等 20 家知名企业官网，
+    平均分只有 42.2。网易和拼多多这种技术团队很强的公司，官网也只有 60 分。
+    <b>AI 可见度低是行业普遍现状</b>，所以这不是「你该补的短板」，是「大家都在裸奔的短板」。
+  </div>
+</header>
+
+<h2>我们到底测什么</h2>
+<p>AI 要在回答里提到你，必须先做到三件事。缺任何一件，你等于不存在：</p>
+<table>
+  <tr><th style="width:38%">检查项</th><th>AI 需要它做什么</th><th style="width:16%">权重</th></tr>
+  <tr><td><code>robots.txt</code></td><td>别禁止 AI 爬虫访问</td><td>30 分</td></tr>
+  <tr><td>结构化数据</td><td>让 AI 知道你是谁、做什么业务</td><td>25 分</td></tr>
+  <tr><td>FAQ 问答</td><td>让 AI 抽得到你的答案并引用</td><td>15 分</td></tr>
+  <tr><td>可达性</td><td>网站要能正常打开、证书要有效</td><td>15 分</td></tr>
+  <tr><td><code>llms.txt</code></td><td>主动告诉 AI 你的业务</td><td>10 分</td></tr>
+  <tr><td>sitemap / meta</td><td>帮助 AI 定位和理解页面</td><td>5 分</td></tr>
+</table>
+<p>全部基于公开文件判定（<code>robots.txt</code>、<code>llms.txt</code>、页面源代码），
+不抓取任何个人信息。</p>
+
+<h2>行业基准：19 家中国企业实测</h2>
+<p>全网没有第二家公开卖这个。你可以直接拿自己行业的数字去和同行比：</p>
+<table>
+  <tr><th>行业</th><th>样本</th><th>平均分</th><th>中位数</th><th>区间</th><th style="width:22%">分布</th></tr>
+  <tr><td>口腔医疗</td><td>7</td><td>51.7</td><td>53</td><td>18 – 100</td>
+    <td><div class="bar"><i class="mid" style="width:52%"></i></div></td></tr>
+  <tr><td>教育培训</td><td>5</td><td>55.6</td><td>50</td><td>28 – 100</td>
+    <td><div class="bar"><i class="mid" style="width:56%"></i></div></td></tr>
+  <tr><td>装修装饰</td><td>3</td><td>42.7</td><td>40</td><td>28 – 60</td>
+    <td><div class="bar"><i style="width:43%"></i></div></td></tr>
+  <tr><td>设计创意</td><td>2</td><td>55.0</td><td>60</td><td>50 – 60</td>
+    <td><div class="bar"><i class="mid" style="width:55%"></i></div></td></tr>
+  <tr><td>本地生活</td><td>2</td><td>50.0</td><td>50</td><td>50 – 50</td>
+    <td><div class="bar"><i class="mid" style="width:50%"></i></div></td></tr>
+  <tr><td><b>全行业</b></td><td><b>19</b></td><td><b>51.5</b></td><td><b>50</b></td><td><b>18 – 100</b></td>
+    <td><div class="bar"><i class="mid" style="width:52%"></i></div></td></tr>
+</table>
+<div class="ok-box">
+  <b>平均 51.5 分，中位数 50 分。</b>
+  也就是说，一半以上的中国中小企业官网在 AI 眼里基本是隐形的。
+  你不是落后了，你是和大家一起落后了 —— 这也意味着整改后能立刻甩开同行。
+</div>
+
+<h2>报告价格</h2>
+<p class="sub" style="font-size:15px">
+  国际市场同类 GEO 审计报价 $700–$5,000/单（已核实 Astral、Layer3Labs、MarketerHire 等 8 家 2026 公开报价）。
+  国内中小企业承受力低一个数量级，所以我们不靠讲 PPT 卖高价，靠给能直接用的代码。
+</p>
+
+<div class="card">
+  <div class="tier">
+    <div><b>免费体检</b><div class="gives">总分 + 评级 + 最关键一条建议。不给做法。</div></div>
+    <div class="price">¥0</div>
+  </div>
+  <div class="tier">
+    <div><b>单站速览</b><div class="gives">8 维度逐项得分 + 3 条优先级建议 + PDF</div></div>
+    <div class="price">¥1</div>
+  </div>
+  <div class="tier">
+    <div><b>行业对标（10 家）</b><div class="gives">同行排行 + 中位数 + 你排第几 + Excel 对标表</div></div>
+    <div class="price">¥9.9</div>
+  </div>
+  <div class="tier">
+    <div><b>深度整改包</b><div class="gives">完整诊断 + 可直接粘贴的 JSON-LD / llms.txt / robots.txt 定制内容 + 按投入产出排序的整改排期表 + 30 天内 3 次免费复测</div></div>
+    <div class="price">¥99</div>
+  </div>
+  <div class="tier">
+    <div><b>竞品攻防（5 家对比）</b><div class="gives">深度包全部 + 5 家竞品逐项对比 + AI 引用差异分析 + 差异化关键词 + 90 天跟踪</div></div>
+    <div class="price">¥299</div>
+  </div>
+  <div class="tier">
+    <div><b>白标授权（服务商/代运营）</b><div class="gives">体检引擎 API 调用权 + 你的品牌 logo 和域名 + 模板自定义 + 批量导出客户名单 + 技术对接支持</div></div>
+    <div class="price">¥2999<small>/年</small></div>
+  </div>
+</div>
+
+<p><b>为什么有 1 元档：</b>不是噱头。付过一次钱的人，再付 99 元的概率高一个数量级。
+这一条比任何营销话术都实在 —— 我们宁愿 1 元卖 10000 单，也不想 99 元卖不出去。</p>
+
+<h2>先免费查一下你自己的站</h2>
+<p>输入你的网址，立刻知道 AI 能不能抓到你。</p>
+<div class="card">
+  <input id="u" type="text" placeholder="https://你的公司官网" value="">
+  <button id="go">免费体检</button>
+  <div id="out"></div>
+</div>
+<p class="sub" style="font-size:14px">
+  说明：体检在服务端完成，结果由丙大山数据资产出具。
+  当前演示版请把结果页截图发我们，我们会在 24 小时内出正式报告。
+</p>
+
+<h2>我们修过的真实错误</h2>
+<p>体检工具本身出错，客户就会为不存在的问题付钱。所以这几处我们都修了，并写成了自动化断言（107 条全绿）：</p>
+<table>
+  <tr><th>缺陷</th><th>后果</th></tr>
+  <tr><td>不认 JSON-LD <code>@graph</code></td><td>15 家被误判「无结构化数据」，而这恰恰是 Google 推荐写法</td></tr>
+  <tr><td>只认 HTTP 200</td><td>华为、海尔等活站被判「官网无法访问」</td></tr>
+  <tr><td>把 WAF 挑战页当官网内容</td><td>等于对着验证码打分，数据造假</td></tr>
+  <tr><td>证书故障说成「网站打不开」</td><td>把我们自己的网络问题算到客户头上</td></tr>
+  <tr><td>robots.txt 缺失算作「禁止 AI」</td><td>全场误判成 0 分</td></tr>
+</table>
+
+<h2>常见问题</h2>
+<p><b>大公司官网分数就很高吗？</b><br>
+不是。20 家知名企业平均 42.2 分。网易、拼多多、哔哩哔哩都只有 60 分。
+这是行业普遍现象，不是你的个人问题。</p>
+
+<p><b>会不会泄露我的商业信息？</b><br>
+只读取公开文件（robots.txt、llms.txt、页面源代码）。不抓取、不存储、不出售任何个人信息。
+对外发布的行业基准只有分数和行业，不含企业名称。</p>
+
+<p><b>整改完真有用吗？</b><br>
+这些是搜索引擎和 AI 爬虫公开承认的读取约定，属于事实性基础设施，不是什么玄学。
+但要诚实说：整改能让你「有资格被引用」，不能保证「一定被引用」。
+引用还取决于内容质量和第三方信源，这是我们不承诺的部分。</p>
+
+<footer>
+  <p><b>上海丙大山智能科技有限公司</b> · <a href="mailto:460123249@qq.com">460123249@qq.com</a></p>
+  <p>本站数据由自研引擎对公开官网实测得出，可复现、可复核，不含人工改写的分数。</p>
+  <p><a href="./llms.txt">llms.txt</a> · <a href="./robots.txt">robots.txt</a> ·
+     <a href="https://breezesamuel.github.io/geo-audit/sitemap.xml">sitemap.xml</a></p>
+</footer>
+</div>
+
+<script>
+document.getElementById('go').onclick = function(){
+  var u = document.getElementById('u').value.trim();
+  var o = document.getElementById('out');
+  if(!/^https?:\/\/.+/i.test(u)){ o.textContent = '请填完整网址，例如 https://example.com'; return; }
+  this.disabled = true; o.textContent = '体检中，请稍候…';
+  var self = this;
+  fetch('https://geo-audit-24xs.vercel.app/api/audit?url=' + encodeURIComponent(u))
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      self.disabled = false;
+      if(d.error){ o.textContent = '体检失败：' + d.error; return; }
+      var c = d.checks || {};
+      var line = [
+        '总分 ' + d.score + ' / 100　评级：' + (d.grade || '-'),
+        '',
+        'robots.txt 放行 AI　' + (c.robots && c.robots.ok ? '通过' : '未通过'),
+        '结构化数据　　　　' + (c.schema && c.schema.ok ? '有' : '缺'),
+        'FAQ 问答区块　　　' + (c.faq && c.faq.ok ? '有' : '缺'),
+        'llms.txt　　　　　' + (c.llms && c.llms.ok ? '有' : '缺'),
+        'sitemap.xml　　　　' + (c.sitemap && c.sitemap.ok ? '有' : '缺'),
+        '',
+        '行业平均分基准：口腔 51.7 / 教育 55.6 / 装修 42.7 / 全行业 51.5'
+      ].join('\n');
+      if(d.blockers && d.blockers.length){
+        line += '\n\n待整改：\n- ' + d.blockers.join('\n- ');
+      }
+      line += '\n\n完整报告与整改代码：1 元（速览）/ 99 元（深度整改包）';
+      o.textContent = line;
+    })
+    .catch(function(){
+      self.disabled = false;
+      o.textContent = '体检接口暂时不可达（演示环境）。请邮件 460123249@qq.com，我们人工跑一次给你。';
+    });
+};
+</script>
+</body>
+</html>

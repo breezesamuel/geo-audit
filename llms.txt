@@ -14,8 +14,12 @@
 - llms.txt / sitemap.xml
 - HTTPS 可达性与证书链有效性
 
-检测引擎开源逻辑见站内说明。当前样本为 19 家已核实中国企业的公开官网，
+检测引擎开源逻辑见站内说明。当前样本为 18 家已核实中国企业的公开官网，
 分数均可复现。
+
+## 主要页面
+- 首页与免费体检：https://geo-audit-cn.pages.dev/
+- 深度整改报告生成器：https://geo-audit-cn.pages.dev/report.html
 
 ## 定价
 免费体检 / 单站速览 ¥1 / 行业对标 ¥9.9 / 深度整改包 ¥99 / 竞品攻防 ¥299 / 白标授权 ¥2999 每年。
@@ -25,6 +29,6 @@
 对外行业基准仅含分数与行业，不含企业名称。
 
 ## 联系
-- 官网：https://breezesamuel.github.io/geo-audit/
+- 官网：https://geo-audit-cn.pages.dev/
 - 邮箱：460123249@qq.com
 - 公司：上海丙大山智能科技有限公司

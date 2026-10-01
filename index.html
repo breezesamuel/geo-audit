@@ -341,10 +341,10 @@ function render(d){
   }
 
   h += '<div class="buy">'
-    + '<a class="b1" href="mailto:460123249@qq.com?subject=订购单站速览&body='+encodeURIComponent('网址：'+d.url+'\n分数：'+d.score)+'">¥1 单站速览</a>'
+    + '<a class="b1" href="./report.html?url='+encodeURIComponent(d.url)+'">查看完整整改报告</a>'
     + '<a class="b2" href="mailto:460123249@qq.com?subject=订购深度整改包&body='+encodeURIComponent('网址：'+d.url+'\n分数：'+d.score+'，想要完整整改代码和排期')+'">¥99 深度整改包</a>'
     + '</div>';
-  h += '<div class="tiny">当前为演示环境，付款请先邮件联系，我们发送支付宝收款码并回传正式报告。'
+  h += '<div class="tiny">完整报告自带可直接粘贴的 JSON-LD / llms.txt / robots.txt 代码和整改排期表。'
     + '行业参考基准：教育 60.0 / 口腔 59.5 / 本地生活 53.3 / 装修 34.0 / 全行业 51.0（中位数 50）。</div>';
   h += '</div>';
   return h;

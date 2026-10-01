@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI 可见度体检 · 丙大山数据资产</title>
-<meta name="description" content="实测：网易、拼多多、知乎官网 AI 可见度都只有 60 分。当客户在 AI 里问「哪家好」，AI 提不提你？19 家中国企业实测基准，1 元起查。">
-<link rel="canonical" href="https://breezesamuel.github.io/geo-audit/">
+<meta name="description" content="实测：网易、拼多多、知乎官网 AI 可见度都只有 60 分。当客户在 AI 里问「哪家好」，AI 提不提你？18 家中国企业实测基准，1 元起查。">
+<link rel="canonical" href="https://geo-audit-cn.pages.dev/">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -13,14 +13,14 @@
     {
       "@type": "Organization",
       "name": "上海丙大山智能科技有限公司",
-      "url": "https://breezesamuel.github.io/geo-audit/",
+      "url": "https://geo-audit-cn.pages.dev/",
       "description": "企业官网 AI 可见度体检与整改服务",
       "email": "460123249@qq.com"
     },
     {
       "@type": "WebSite",
       "name": "AI 可见度体检",
-      "url": "https://breezesamuel.github.io/geo-audit/",
+      "url": "https://geo-audit-cn.pages.dev/",
       "inLanguage": "zh-CN"
     },
     {
@@ -96,7 +96,6 @@ input,button{font:inherit;padding:12px 14px;border-radius:8px;border:1px solid v
 input{width:100%;background:var(--bg);color:var(--fg);margin:10px 0}
 button{background:var(--accent);color:#fff;border:0;cursor:pointer;font-weight:600;width:100%}
 button:disabled{opacity:.5;cursor:not-allowed}
-#out{margin-top:18px;white-space:pre-wrap;font-size:14px;word-break:break-all}
 .note{background:rgba(248,81,73,.08);border-left:3px solid var(--bad);
   padding:12px 16px;border-radius:0 8px 8px 0;margin:18px 0;font-size:15px}
 .ok-box{background:rgba(63,185,80,.08);border-left:3px solid var(--ok);
@@ -104,6 +103,39 @@ button:disabled{opacity:.5;cursor:not-allowed}
 footer{margin:56px 0 0;padding:24px 0 48px;border-top:1px solid var(--line);
   color:var(--dim);font-size:13px}
 code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px}
+
+/* 体检结果卡 */
+#out{margin-top:18px}
+.res{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:20px}
+.res-head{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.gauge{width:96px;height:96px;border-radius:50%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;flex-shrink:0;border:6px solid var(--line)}
+.gauge b{font-size:30px;line-height:1}
+.gauge span{font-size:11px;color:var(--dim)}
+.res-meta{flex:1;min-width:180px}
+.res-meta .g{font-size:13px;color:var(--dim)}
+.res-meta .n{font-size:17px;font-weight:700;word-break:break-all}
+.dims{margin:16px 0 0}
+.dim{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:14px}
+.dim .dn{width:130px;flex-shrink:0}
+.dim .dt{flex:1;height:7px;background:var(--line);border-radius:4px;overflow:hidden}
+.dim .df{height:100%;border-radius:4px}
+.dim .ds{width:38px;text-align:right;font-variant-numeric:tabular-nums;color:var(--dim)}
+.find{margin-top:14px}
+.find .fi{display:flex;gap:9px;align-items:flex-start;padding:7px 0;font-size:14px;
+  border-top:1px solid var(--line)}
+.find .fi:first-child{border-top:0}
+.find .fi .mk{flex-shrink:0;font-weight:700}
+.bad .mk,.bad .ds{color:var(--bad)}
+.ok .mk,.ok .ds{color:var(--ok)}
+.warn .mk,.warn .ds{color:var(--warn)}
+.buy{margin-top:18px;display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.buy a{display:block;text-align:center;padding:12px;border-radius:8px;text-decoration:none;
+  font-weight:700;font-size:14px}
+.buy .b1{background:var(--ok);color:#04210f}
+.buy .b2{background:var(--accent);color:#fff}
+.tiny{font-size:12px;color:var(--dim);margin-top:8px}
+@media(max-width:560px){.buy{grid-template-columns:1fr}.dim .dn{width:96px}}
 </style>
 </head>
 <body>
@@ -111,7 +143,7 @@ code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px}
 
 <header>
   <h1>你的官网，AI 看得见吗？</h1>
-  <p class="sub">当客户在 DeepSeek / Kimi / 豆包 / ChatGPT 里问「上海哪家口腔诊所好」，
+  <p class="sub">当客户在 DeepSeek / Kimi / 豆包 / ChatGPT 里问「哪家好」，
   AI 会不会提到你？—— 这是 1 块钱就能知道的事。</p>
 
   <div class="hero-score">
@@ -129,6 +161,14 @@ code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px}
   </div>
 </header>
 
+<h2>先免费查一下你自己的站</h2>
+<p>输入网址，实时体检，30 秒内知道 AI 能不能抓到你。不需要注册。</p>
+<div class="card">
+  <input id="u" type="text" placeholder="你的公司官网，例如 www.example.com" autocomplete="off">
+  <button id="go">免费体检</button>
+</div>
+<div id="out"></div>
+
 <h2>我们到底测什么</h2>
 <p>AI 要在回答里提到你，必须先做到三件事。缺任何一件，你等于不存在：</p>
 <table>
@@ -141,7 +181,8 @@ code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px}
   <tr><td>sitemap / meta</td><td>帮助 AI 定位和理解页面</td><td>5 分</td></tr>
 </table>
 <p>全部基于公开文件判定（<code>robots.txt</code>、<code>llms.txt</code>、页面源代码），
-不抓取任何个人信息。</p>
+不抓取任何个人信息。遇到开启反爬验证（WAF/验证码）的站，我们标「需人工复核」，
+绝不绕过安全控制，也绝不对着验证码页打分。</p>
 
 <h2>行业基准：18 家中国企业实测</h2>
 <p>全网没有第二家公开卖这个。你可以直接拿自己行业的数字去和同行比：</p>
@@ -176,7 +217,7 @@ code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px}
 
 <div class="card">
   <div class="tier">
-    <div><b>免费体检</b><div class="gives">总分 + 评级 + 最关键一条建议。不给做法。</div></div>
+    <div><b>免费体检</b><div class="gives">本站上方，即时出分。总分 + 评级 + 缺什么。</div></div>
     <div class="price">¥0</div>
   </div>
   <div class="tier">
@@ -204,27 +245,17 @@ code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px}
 <p><b>为什么有 1 元档：</b>不是噱头。付过一次钱的人，再付 99 元的概率高一个数量级。
 这一条比任何营销话术都实在 —— 我们宁愿 1 元卖 10000 单，也不想 99 元卖不出去。</p>
 
-<h2>先免费查一下你自己的站</h2>
-<p>输入你的网址，立刻知道 AI 能不能抓到你。</p>
-<div class="card">
-  <input id="u" type="text" placeholder="https://你的公司官网" value="">
-  <button id="go">免费体检</button>
-  <div id="out"></div>
-</div>
-<p class="sub" style="font-size:14px">
-  说明：体检在服务端完成，结果由丙大山数据资产出具。
-  当前演示版请把结果页截图发我们，我们会在 24 小时内出正式报告。
-</p>
-
 <h2>我们修过的真实错误</h2>
 <p>体检工具本身出错，客户就会为不存在的问题付钱。所以这几处我们都修了，并写成了自动化断言（107 条全绿）：</p>
 <table>
   <tr><th>缺陷</th><th>后果</th></tr>
-  <tr><td>不认 JSON-LD <code>@graph</code></td><td>15 家被误判「无结构化数据」，而这恰恰是 Google 推荐写法</td></tr>
+  <tr><td>不认 JSON-LD <code>@graph</code></td><td>把 Google 推荐写法误判成「无结构化数据」</td></tr>
   <tr><td>只认 HTTP 200</td><td>华为、海尔等活站被判「官网无法访问」</td></tr>
   <tr><td>把 WAF 挑战页当官网内容</td><td>等于对着验证码打分，数据造假</td></tr>
-  <tr><td>证书故障说成「网站打不开」</td><td>把我们自己的网络问题算到客户头上</td></tr>
+  <tr><td>把 412「出错啦」反爬页当真站</td><td>B 站这类正常站被冤判 18 分</td></tr>
+  <tr><td>520 回源失败占位页当官网</td><td>凭空指控客户缺这缺那</td></tr>
   <tr><td>robots.txt 缺失算作「禁止 AI」</td><td>全场误判成 0 分</td></tr>
+  <tr><td>只查域名根、不查站点根</td><td>子目录站点被判「什么都没配」</td></tr>
 </table>
 
 <h2>常见问题</h2>
@@ -245,49 +276,97 @@ code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px}
   <p><b>上海丙大山智能科技有限公司</b> · <a href="mailto:460123249@qq.com">460123249@qq.com</a></p>
   <p>本站数据由自研引擎对公开官网实测得出，可复现、可复核，不含人工改写的分数。</p>
   <p><a href="./llms.txt">llms.txt</a> · <a href="./robots.txt">robots.txt</a> ·
-     <a href="https://breezesamuel.github.io/geo-audit/sitemap.xml">sitemap.xml</a></p>
+     <a href="./sitemap.xml">sitemap.xml</a></p>
 </footer>
 </div>
 
 <script>
+var API = (location.hostname.indexOf('.pages.dev') >= 0)
+  ? './api/audit'
+  : 'https://geo-audit-cn.pages.dev/api/audit';
+
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+function scoreColor(v){
+  if(v>=80) return 'var(--ok)';
+  if(v>=55) return 'var(--warn)';
+  return 'var(--bad)';
+}
+
+function render(d){
+  var c = d.checks || {};
+  var col = scoreColor(d.score||0);
+  var blocked = (c.robots && c.robots.blocked) || [];
+  var dims = [
+    ['robots 放行 AI', blocked.length ? 0 : (c.robots && c.robots.exists ? 30 : 18), 30],
+    ['结构化数据', (c.schema && c.schema.exists) ? (c.schema.has_org ? 25 : 12) : 0, 25],
+    ['FAQ 问答', (c.schema && c.schema.has_faq) ? 15 : 0, 15],
+    ['llms.txt', (c.llms && c.llms.exists) ? 10 : 0, 10],
+    ['meta 描述', (c.meta && c.meta.has_description) ? 10 : 0, 10],
+    ['sitemap.xml', (c.sitemap && c.sitemap.exists) ? 10 : 0, 10]
+  ];
+  var unreachable = c.reachable && c.reachable.ok === false;
+  var waf = d.waf_blocked || (c.reachable && c.reachable.waf) || /复核/.test(d.grade||'');
+  var h = '';
+  h += '<div class="res">';
+  h += '<div class="res-head">';
+  h += '<div class="gauge" style="border-color:'+col+'"><b style="color:'+col+'">'+esc(d.score)+'</b><span>满分 100</span></div>';
+  h += '<div class="res-meta"><div class="g">评级：'+esc(d.grade||'-')+'　行业：'+esc(d.industry||'其他')+'</div>';
+  h += '<div class="n">'+esc(d.name||d.host||d.url)+'</div>';
+  h += '<div class="g">'+esc(d.host||'')+'</div></div></div>';
+
+  if(unreachable || waf){
+    h += '<div class="note" style="margin:16px 0 0">'+esc((d.blockers||[]).join(' '))+'</div>';
+  }else{
+    h += '<div class="dims">';
+    dims.forEach(function(x){
+      var pct = x[2] ? Math.round(x[1]/x[2]*100) : 0;
+      var cc = pct>=80?'var(--ok)':pct>=40?'var(--warn)':'var(--bad)';
+      h += '<div class="dim"><div class="dn">'+x[0]+'</div><div class="dt">'
+        + '<div class="df" style="width:'+pct+'%;background:'+cc+'"></div></div>'
+        + '<div class="ds">'+x[1]+'/'+x[2]+'</div></div>';
+    });
+    h += '</div>';
+    var bl = d.blockers || [];
+    if(bl.length){
+      h += '<div class="find"><div class="dim ds" style="width:auto;color:var(--dim);padding-bottom:4px">待整改 '+bl.length+' 项</div>';
+      bl.forEach(function(b){
+        h += '<div class="fi bad"><div class="mk">✗</div><div>'+esc(b)+'</div></div>';
+      });
+      h += '</div>';
+    }else{
+      h += '<div class="find"><div class="fi ok"><div class="mk">✓</div><div>没有发现明显缺口，已具备被 AI 引用的基础条件。</div></div></div>';
+    }
+  }
+
+  h += '<div class="buy">'
+    + '<a class="b1" href="mailto:460123249@qq.com?subject=订购单站速览&body='+encodeURIComponent('网址：'+d.url+'\n分数：'+d.score)+'">¥1 单站速览</a>'
+    + '<a class="b2" href="mailto:460123249@qq.com?subject=订购深度整改包&body='+encodeURIComponent('网址：'+d.url+'\n分数：'+d.score+'，想要完整整改代码和排期')+'">¥99 深度整改包</a>'
+    + '</div>';
+  h += '<div class="tiny">当前为演示环境，付款请先邮件联系，我们发送支付宝收款码并回传正式报告。'
+    + '行业参考基准：教育 60.0 / 口腔 59.5 / 本地生活 53.3 / 装修 34.0 / 全行业 51.0（中位数 50）。</div>';
+  h += '</div>';
+  return h;
+}
+
 document.getElementById('go').onclick = function(){
   var u = document.getElementById('u').value.trim();
   var o = document.getElementById('out');
-  if(!/^https?:\/\/.+/i.test(u)){ o.textContent = '请填完整网址，例如 https://example.com'; return; }
-  this.disabled = true; o.textContent = '体检中，请稍候…';
+  if(!u){ o.innerHTML = '<div class="note">请填写网址。</div>'; return; }
+  this.disabled = true;
+  o.innerHTML = '<div class="card">体检中，正在从边缘节点抓取你的网站…（约 5–20 秒）</div>';
   var self = this;
-  // 一个文件同时部署到两处：Cloudflare Pages（同源自带 Function）和大流量静态镜像
-  // （GitHub Pages，同源没有后端，调远端边缘 API）。用户在哪都能点出结果。
-  var API = (location.hostname.indexOf('.pages.dev') >= 0)
-    ? './api/audit'
-    : 'https://geo-audit-cn.pages.dev/api/audit';
   fetch(API + '?url=' + encodeURIComponent(u))
     .then(function(r){ return r.json(); })
     .then(function(d){
       self.disabled = false;
-      if(d.error){ o.textContent = '体检失败：' + d.error; return; }
-      var c = d.checks || {};
-      var line = [
-        '总分 ' + d.score + ' / 100　评级：' + (d.grade || '-'),
-        '站点：' + (d.name || d.host || '') + '　行业：' + (d.industry || '其他'),
-        '',
-        'robots.txt 放行 AI　' + (c.robots && c.robots.blocked.length ? '被拦截' : (c.robots && c.robots.exists ? '通过' : '缺')),
-        '结构化数据　　　　' + (c.schema && c.schema.exists ? '有' : '缺'),
-        'FAQ 问答区块　　　' + (c.faq && c.faq.exists ? '有' : '缺'),
-        'llms.txt　　　　　' + (c.llms && c.llms.exists ? '有' : '缺'),
-        'sitemap.xml　　　　' + (c.sitemap && c.sitemap.exists ? '有' : '缺'),
-        '',
-        '行业平均分基准：教育 60.0 / 口腔 59.5 / 本地生活 53.3 / 装修 34.0 / 全行业 51.0'
-      ].join('\n');
-      if(d.blockers && d.blockers.length){
-        line += '\n\n待整改：\n- ' + d.blockers.join('\n- ');
-      }
-      line += '\n\n完整报告与整改代码：1 元（速览）/ 99 元（深度整改包）';
-      o.textContent = line;
+      if(d.error){ o.innerHTML = '<div class="note">体检失败：'+esc(d.error)+'</div>'; return; }
+      o.innerHTML = render(d);
     })
     .catch(function(){
       self.disabled = false;
-      o.textContent = '体检接口暂时不可达。请邮件 460123249@qq.com，我们人工跑一次给你。';
+      o.innerHTML = '<div class="note">体检接口暂时不可达。请邮件 460123249@qq.com，我们人工跑一次给你。</div>';
     });
 };
 </script>

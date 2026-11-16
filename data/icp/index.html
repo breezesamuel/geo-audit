@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>丙大山 · ICP 备案企业库</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --green: #3fb950;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --border: #30363d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 40px 20px 20px; }
+  h1 {
+    color: #fff;
+    font-size: 28px;
+    margin: 0 0 8px;
+  }
+  h1 .dot { color: var(--green); }
+  .sub { color: var(--muted); margin: 0 0 28px; font-size: 14px; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .card .num {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .card .label { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .searchbox {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 15px;
+    margin-bottom: 14px;
+    outline: none;
+  }
+  .searchbox:focus { border-color: var(--green); }
+  .hint { color: var(--muted); font-size: 12px; margin-bottom: 14px; }
+  .hint b { color: var(--green); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 11px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  th {
+    background: #1a2030;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #1c2431; }
+  td.domain { color: var(--green); font-family: Consolas, monospace; }
+  .empty {
+    color: var(--muted);
+    text-align: center;
+    padding: 40px;
+  }
+  footer {
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>丙大山 <span class="dot">·</span> ICP 备案企业库</h1>
+  <p class="sub">收录 status='ok' 的有效 ICP 备案域名及其备案主体信息</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="num" id="stat-enterprises">0</div>
+      <div class="label">备案企业数</div>
+    </div>
+    <div class="card">
+      <div class="num" id="stat-domains">0</div>
+      <div class="label">域名数</div>
+    </div>
+    <div class="card">
+      <div class="num" id="stat-provinces">0</div>
+      <div class="label">覆盖省份数</div>
+    </div>
+  </div>
+
+  <input class="searchbox" id="search" type="text" placeholder="按域名或备案主体搜索…" autocomplete="off">
+  <p class="hint">共 <b id="visible-count">0</b> 条记录（默认全部显示）</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>域名</th>
+        <th>备案主体</th>
+        <th>备案号</th>
+        <th>省份</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <div class="empty" id="empty" style="display:none;">没有匹配的记录</div>
+</div>
+
+<footer>上海丙大山智能科技有限公司 · 460123249@qq.com</footer>
+
+<script>
+const DATA = [{"domain": "163.com", "subject": "广州网易计算机系统有限公司", "number": "粤B2-20090191-18", "province": "粤"}, {"domain": "360.com", "subject": "天津三六零快看科技有限公司", "number": "津ICP备20006251号-2", "province": "津"}, {"domain": "360.net", "subject": "三六零数字安全科技集团有限公司", "number": "京ICP备20015286号-8", "province": "京"}, {"domain": "360buy.com", "subject": "北京京东叁佰陆拾度电子商务有限公司", "number": "京ICP备11041704号-3", "province": "京"}, {"domain": "alibaba.com", "subject": "杭州阿里巴巴海外信息技术有限公司", "number": "浙ICP备2024067534号-3", "province": "浙"}, {"domain": "alipay.com", "subject": "支付宝支付科技有限公司", "number": "沪ICP备15027489号-2", "province": "沪"}, {"domain": "aliyun.com", "subject": "阿里云计算有限公司", "number": "浙B2-20080101-4", "province": "浙"}, {"domain": "antgroup.com", "subject": "蚂蚁科技集团股份有限公司", "number": "浙B2-20100257-3", "province": "浙"}, {"domain": "apple.com", "subject": "苹果电子产品商贸（北京）有限公司", "number": "京ICP备10214630号-1", "province": "京"}, {"domain": "baidu.com", "subject": "北京百度网讯科技有限公司", "number": "京ICP证030173号-1", "province": "京"}, {"domain": "bilibili.com", "subject": "上海宽娱数码科技有限公司", "number": "沪ICP备13002172号-3", "province": "沪"}, {"domain": "bytedance.com", "subject": "北京抖音信息服务有限公司", "number": "京ICP备12025439号-7", "province": "京"}, {"domain": "cctv.com", "subject": "中央广播电视总台", "number": "京ICP备06036302号-2", "province": "京"}, {"domain": "china.com", "subject": "北京华网智讯信息有限公司", "number": "京ICP备18035944号-2", "province": "京"}, {"domain": "chinamobile.com", "subject": "中国移动通信有限公司", "number": "京ICP备05002571号-1", "province": "京"}, {"domain": "chinaunicom.com", "subject": "中国联合网络通信集团有限公司", "number": "京ICP备11000964号-3", "province": "京"}, {"domain": "cnnic.cn", "subject": "中国互联网络信息中心", "number": "京ICP备15032509号-2", "province": "京"}, {"domain": "csdn.net", "subject": "北京创新乐知网络技术有限公司", "number": "京ICP备19004658号-1", "province": "京"}, {"domain": "dianping.com", "subject": "上海汉涛信息咨询有限公司", "number": "沪B2-20040012-1", "province": "沪"}, {"domain": "douyin.com", "subject": "北京抖音科技有限公司", "number": "京ICP备16016397号-3", "province": "京"}, {"domain": "edu.cn", "subject": "清华大学", "number": "京ICP备15006448号-16", "province": "京"}, {"domain": "gome.com.cn", "subject": "北京众盈智联科技有限公司", "number": "京ICP备2024068353号-4", "province": "京"}, {"domain": "haier.com", "subject": "海尔集团电子商务有限公司", "number": "鲁ICP备09096283号-1", "province": "鲁"}, {"domain": "hisense.com", "subject": "海信集团有限公司", "number": "鲁ICP备05027830号-10", "province": "鲁"}, {"domain": "huawei.com", "subject": "华为技术有限公司", "number": "粤A2-20044005号-8", "province": "粤"}, {"domain": "huaweicloud.com", "subject": "华为云计算技术有限公司", "number": "黔ICP备20004760号-14", "province": "黔"}, {"domain": "ifeng.com", "subject": "北京天盈九州网络技术有限公司", "number": "京ICP证030609号-1", "province": "京"}, {"domain": "jd.com", "subject": "北京京东叁佰陆拾度电子商务有限公司", "number": "京ICP备11041704号-3", "province": "京"}, {"domain": "kanzhun.com", "subject": "上海直品时光信息技术有限公司", "number": "沪ICP备2026052401号-2", "province": "沪"}, {"domain": "kuaishou.com", "subject": "北京快手科技有限公司", "number": "京ICP备15023266号-136", "province": "京"}, {"domain": "lenovo.com", "subject": "联想（北京）有限公司", "number": "京ICP备11035381号-2", "province": "京"}, {"domain": "meituan.com", "subject": "北京三快科技有限公司", "number": "京ICP备10211739号-1", "province": "京"}, {"domain": "mi.com", "subject": "小米科技有限责任公司", "number": "京ICP备10046444号-7", "province": "京"}, {"domain": "microsoft.com", "subject": "微软（中国）有限公司", "number": "京ICP备09042378号-6", "province": "京"}, {"domain": "midea.com", "subject": "美的集团股份有限公司", "number": "粤ICP备09215446号-1", "province": "粤"}, {"domain": "netease.com", "subject": "广州网易计算机系统有限公司", "number": "粤B2-20090191-2", "province": "粤"}, {"domain": "people.com.cn", "subject": "人民网股份有限公司", "number": "京ICP备12004265号-13", "province": "京"}, {"domain": "pinduoduo.com", "subject": "上海寻梦信息技术有限公司", "number": "沪ICP备15010535号-13", "province": "沪"}, {"domain": "qcloud.com", "subject": "腾讯云计算（北京）有限责任公司", "number": "京ICP备11018762号-11", "province": "京"}, {"domain": "qq.com", "subject": "深圳市腾讯计算机系统有限公司", "number": "粤B2-20090059-5", "province": "粤"}, {"domain": "sina.com", "subject": "北京新浪互联信息服务有限公司", "number": "京ICP证000007-2", "province": "京"}, {"domain": "sina.com.cn", "subject": "北京新浪互联信息服务有限公司", "number": "京ICP证000007-6", "province": "京"}, {"domain": "smzdm.com", "subject": "北京值得买科技股份有限公司", "number": "京ICP备12048526号-2", "province": "京"}, {"domain": "so.com", "subject": "天津三六零快看科技有限公司", "number": "津ICP备20006251号-4", "province": "津"}, {"domain": "sohu.com", "subject": "北京搜狐互联网信息服务有限公司", "number": "京ICP证030367号-1", "province": "京"}, {"domain": "taobao.com", "subject": "浙江淘宝网络有限公司", "number": "浙B2-20080224-1", "province": "浙"}, {"domain": "tencent.com", "subject": "深圳市腾讯计算机系统有限公司", "number": "粤B2-20090059-1", "province": "粤"}, {"domain": "vip.com", "subject": "广州唯品会电子商务有限公司", "number": "粤ICP备08114786号-9", "province": "粤"}, {"domain": "weibo.com", "subject": "北京微梦创科网络技术有限公司", "number": "京ICP备12002058号-2", "province": "京"}, {"domain": "xiaohongshu.com", "subject": "行吟信息科技（上海）有限公司", "number": "沪ICP备13030189号-1", "province": "沪"}, {"domain": "xinhuanet.com", "subject": "新华网股份有限公司", "number": "京ICP证010042号-2", "province": "京"}, {"domain": "zhihu.com", "subject": "北京智者天下科技有限公司", "number": "京ICP备13052560号-1", "province": "京"}];
+
+const tbody = document.getElementById('tbody');
+const empty = document.getElementById('empty');
+const searchInput = document.getElementById('search');
+const visibleCount = document.getElementById('visible-count');
+
+const subjects = new Set();
+const provinces = new Set();
+DATA.forEach(d => {
+  if (d.subject) subjects.add(d.subject);
+  if (d.province) provinces.add(d.province);
+});
+document.getElementById('stat-enterprises').textContent = subjects.size;
+document.getElementById('stat-domains').textContent = DATA.length;
+document.getElementById('stat-provinces').textContent = provinces.size;
+
+function render(rows) {
+  tbody.innerHTML = '';
+  if (rows.length === 0) {
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    const frag = document.createDocumentFragment();
+    rows.forEach(d => {
+      const tr = document.createElement('tr');
+      tr.dataset.domain = d.domain.toLowerCase();
+      tr.dataset.subject = d.subject.toLowerCase();
+      tr.innerHTML =
+        '<td class="domain"></td><td></td><td></td><td></td>';
+      const tds = tr.querySelectorAll('td');
+      tds[0].textContent = d.domain;
+      tds[1].textContent = d.subject;
+      tds[2].textContent = d.number;
+      tds[3].textContent = d.province;
+      frag.appendChild(tr);
+    });
+    tbody.appendChild(frag);
+  }
+  visibleCount.textContent = rows.length;
+}
+
+function filter(q) {
+  q = q.trim().toLowerCase();
+  if (!q) return DATA.slice();
+  return DATA.filter(d =>
+    d.domain.toLowerCase().includes(q) ||
+    d.subject.toLowerCase().includes(q)
+  );
+}
+
+searchInput.addEventListener('input', () => render(filter(searchInput.value)));
+render(DATA);
+</script>
+</body>
+</html>

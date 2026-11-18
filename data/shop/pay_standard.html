@@ -7,7 +7,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f7fa;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.container{background:#fff;border-radius:20px;padding:35px;max-width:480px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.container{background:#fff;border-radius:20px;padding:35px;max-width:500px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.08)}
 .header{text-align:center;margin-bottom:25px}
 .icon{font-size:56px;margin-bottom:12px}
 h1{font-size:24px;color:#1a1a1a;margin-bottom:8px}
@@ -19,12 +19,12 @@ h1{font-size:24px;color:#1a1a1a;margin-bottom:8px}
 .steps{margin:25px 0}
 .step{display:flex;align-items:flex-start;margin:14px 0}
 .step-num{width:28px;height:28px;border-radius:50%;background:#ff6b00;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-right:12px;flex-shrink:0;font-size:13px}
-.btn-pay{display:block;width:100%;padding:16px;background:#ff6b00;color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer;margin:20px 0;text-align:center;text-decoration:none}
+.step-text{font-size:15px;color:#333;line-height:1.5}
+.btn-pay{display:block;width:100%;padding:16px;background:#ff6b00;color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer;margin:20px 0;text-decoration:none;text-align:center}
 .btn-pay:hover{background:#e55a00}
-.qr-section{background:#fff8f0;border:2px dashed #ff6b00;border-radius:16px;padding:25px;margin:25px 0;text-align:center}
+.btn-email{display:block;width:100%;padding:14px;background:#fff;color:#ff6b00;border:2px solid #ff6b00;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin:10px 0;text-decoration:none;text-align:center}
 .trust{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:18px;margin:20px 0;font-size:14px;color:#166534}
 .footer{text-align:center;margin-top:30px;font-size:12px;color:#999;line-height:2}
-.check-btn{display:block;width:100%;padding:14px;background:#fff;color:#1677ff;border:2px solid #1677ff;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin:10px 0;text-decoration:none;text-align:center}
 </style>
 </head>
 <body>
@@ -41,41 +41,36 @@ h1{font-size:24px;color:#1a1a1a;margin-bottom:8px}
   
   <div class="order-info">
     <div style="font-size:13px;color:#666;margin-bottom:8px">您的订单号（付款后发给客服）：</div>
-    <div class="order-no">BD-20261118232818-34B5C1</div>
+    <div class="order-no">BD-20261118233311-54C065</div>
     <div style="margin-top:10px;font-size:13px;color:#666">商品：标准数据包 | 金额：¥99.0</div>
   </div>
   
   <div class="steps">
-    <h3 style="margin-bottom:15px;font-size:16px">💳 支付方式（选择一种）：</h3>
-    <div class="step"><div class="step-num">1</div><div class="step-text">方式一：直接扫码付（推荐）</div></div>
-    <div class="step"><div class="step-num">2</div><div class="step-text">方式二：搜索商户ID付款</div></div>
+    <h3 style="margin-bottom:15px;font-size:16px">💳 支付方式：</h3>
+    <div class="step"><div class="step-num">1</div><div class="step-text">点击下方按钮<strong>打开支付宝</strong></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">输入金额 <strong>¥99.0</strong> 完成付款</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">付款成功后点击「我已付款」发送邮件确认</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">30分钟内发送数据下载链接到你的邮箱</div></div>
   </div>
   
-  <div class="qr-section">
-    <div style="font-size:20px;margin-bottom:15px">📱 支付宝扫码支付</div>
-    <div style="font-size:60px;margin:20px 0">💳</div>
-    <div style="font-size:14px;color:#666">商户ID：<strong>2021004132641258</strong></div>
-    <div style="font-size:13px;color:#999;margin-top:8px">请在支付宝中搜索此ID完成付款</div>
-  </div>
-  
-  <a class="btn-pay" href="alipays://platformapi/startapp?appId=2021004132641258&subject=标准数据包&total_amount=99.0&out_trade_no=BD-20261118232818-34B5C1">
+  <a class="btn-pay" href="alipays://platformapi/startapp?appId=2021004132641258&subject=标准数据包&total_amount=99.0&out_trade_no=BD-20261118233311-54C065">
     🔗 打开支付宝立即付款 ¥99.0
   </a>
   
-  <a class="check-btn" href="mailto:YOUR_REAL_EMAIL@gmail.com?subject=付款确认-BD-20261118232818-34B5C1&body=我已付款%2C订单号%3ABD-20261118232818-34B5C1%0D%0A商品%3A标准数据包%0D%0A金额%3A¥99.0%0D%0A请发送下载链接到本邮箱">
+  <a class="btn-email" href="mailto:YOUR_REAL_EMAIL@gmail.com?subject=付款确认-BD-20261118233311-54C065&body=我已付款%2C订单号%3ABD-20261118233311-54C065%0D%0A商品%3A标准数据包%0D%0A金额%3A%E%A699.0%0D%0A请发送下载链接到我的邮箱。">
     ✅ 我已付款，发送邮件确认
   </a>
   
   <div class="trust">
-    ✅ 付款后30分钟内发货（人工确认）<br>
+    ✅ 付款后30分钟内未收到数据，全额退款<br>
     ✅ 数据来源：全国公共资源交易平台30省+CCGP等公开源<br>
-    ✅ 授权范围：仅限个人研究使用
+    ✅ 授权范围：仅限个人研究使用，禁止二次转售
   </div>
   
   <div class="footer">
     丙大山数据资产平台<br>
-    客服电话：【填写你的手机号】<br>
-    邮箱：YOUR_REAL_EMAIL@gmail.com
+    联系邮箱：<a href="mailto:YOUR_REAL_EMAIL@gmail.com" style="color:#ff6b00">YOUR_REAL_EMAIL@gmail.com</a><br>
+    支付宝商家ID：2021004132641258
   </div>
 </div>
 </body>

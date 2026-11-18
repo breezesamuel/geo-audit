@@ -1,313 +1,223 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>数据商品目录 — 中标供应商/企业档案数据集</title>
-<meta name="description" content="6 档可购买数据商品：基础包 1,000 条 ¥9.9、标准包 10,000 条 ¥99、专业包 44,000+ 条 ¥999、企业征信报告 ¥2999/份、供应商竞争力 Top100 ¥4999/份、单供应商竞争力报告 ¥4999/份（按供应商名单查单家）。数据来自公开政府/交易所源，仅限个人研究使用。">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>丙大山数据资产商城</title>
 <style>
-  :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --text:#e6edf3; --muted:#8b949e; --accent:#2f81f7; --green:#3fb950; --amber:#d29922; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.6; padding: 24px; }
-  .wrap { max-width: 1080px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 28px; }
-  header h1 { font-size: 1.7rem; margin-bottom: 8px; }
-  header p.sub { color: var(--muted); font-size: .95rem; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 28px; }
-  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 22px; position: relative; }
-  .card-basic { border-top: 3px solid var(--green); }
-  .card-standard { border-top: 3px solid var(--amber); }
-  .card-pro { border-top: 3px solid var(--accent); }
-  .card-credit_report { border-top: 3px solid #e15b64; }
-  .card-supplier_top100 { border-top: 3px solid #a371f7; }
-  .card-supplier_report { border-top: 3px solid #e362a9; }
-  .card-badge { position: absolute; top: 14px; right: 16px; font-size: .7rem; letter-spacing: .1em; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
-  .card h2 { font-size: 1.25rem; margin-bottom: 6px; }
-  .card-price { font-size: 2rem; font-weight: 700; margin: 10px 0 14px; }
-  .price-unit { font-size: .85rem; color: var(--muted); font-weight: 400; }
-  .card-highlights { list-style: none; font-size: .88rem; color: var(--muted); margin-bottom: 18px; }
-  .card-highlights li { margin-bottom: 7px; }
-  .card-highlights strong { color: var(--text); }
-  .card-actions { display: flex; flex-direction: column; gap: 8px; }
-  .btn { display: inline-block; text-align: center; text-decoration: none; padding: 10px 14px; border-radius: 8px; font-size: .9rem; font-weight: 600; cursor: pointer; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { filter: brightness(1.1); }
-  .btn-dl { background: transparent; color: var(--text); border: 1px solid var(--border); }
-  .btn-dl:hover { border-color: var(--accent); color: var(--accent); }
-  .card-deliver { margin-top: 14px; padding: 10px 12px; background: rgba(0,0,0,.03); border-radius: 8px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .card-deliver label { font-size: .8rem; opacity: .7; }
-  .card-deliver input { font-size: .85rem; }
-  .card-note { margin-top: 12px; font-size: .78rem; color: var(--muted); text-align: center; }
-  .meta-section { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-  .meta-section h3 { font-size: 1rem; margin-bottom: 10px; }
-  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 10px; font-size: .85rem; color: var(--muted); }
-  .meta-grid div strong { color: var(--text); display: block; }
-  .purchase-flow { margin-top: 16px; font-size: .85rem; color: var(--muted); }
-  .purchase-flow ol { padding-left: 20px; }
-  .purchase-flow li { margin-bottom: 5px; }
-  footer { text-align: center; color: var(--muted); font-size: .78rem; margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); }
+:root{--accent:#2563eb;--border:#e5e7eb;--text:#1f2937;--bg:#f9fafb}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:24px 16px}
+h1{text-align:center;margin-bottom:8px;font-size:1.6rem}
+.subtitle{text-align:center;color:#6b7280;margin-bottom:32px;font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.card{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--border);position:relative;transition:box-shadow .2s}
+.card:hover{box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.card-badge{position:absolute;top:-1px;left:16px;background:var(--accent);color:#fff;font-size:.7rem;padding:2px 10px;border-radius:0 0 8px 8px;font-weight:700;text-transform:uppercase}
+.card h2{margin-bottom:8px;font-size:1.25rem}
+.card-price{font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:12px}
+.card-price .price-unit{font-size:.9rem;font-weight:400;color:#6b7280}
+.card-highlights{list-style:none;margin-bottom:16px}
+.card-highlights li{font-size:.85rem;color:#4b5563;padding:3px 0}
+.card-actions{margin-bottom:12px}
+.btn{display:inline-block;text-decoration:none;padding:10px 20px;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#1d4ed8}
+.btn-dl{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-dl:hover{border-color:var(--accent);color:var(--accent)}
+.card-pay-hint{background:#fefce8;border:1px solid #fde047;border-radius:8px;padding:12px;font-size:.85rem;line-height:1.8;margin-top:8px}
+.card-pay-hint a{color:var(--accent);font-weight:600}
+.card-deliver{margin-top:10px;padding:10px 12px;background:rgba(0,0,0,.03);border-radius:8px;font-size:.8rem;color:#6b7280}
+.card-note{font-size:.75rem;color:#9ca3af;margin-top:12px}
+.flow{background:#fff;border-radius:12px;padding:20px;margin-bottom:32px;border:1px solid var(--border)}
+.flow h3{margin-bottom:12px;font-size:1rem}
+.flow ol{padding-left:20px;font-size:.9rem;color:#4b5563}
+.flow li{padding:4px 0}
+footer{text-align:center;font-size:.8rem;color:#9ca3af;padding:24px 0}
+.card-pro{border-color:#2563eb}.card-standard{border-color:#f59e0b}.card-basic{border-color:#10b981}
+.card-credit_report{border-color:#8b5cf6}.card-supplier_top100{border-color:#ec4899}.card-supplier_report{border-color:#ef4444}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>📊 数据商品目录</h1>
-    <p class="sub">中标供应商 / 企业档案数据集 — 3 档数据包 + 征信报告¥2999 + 供应商竞争力Top100¥4999 + 单供应商竞争力报告¥4999/份 · 全量 64,387 条已入库 · 更新 2026-11-18 19:27:52</p>
-  </header>
+<div class="container">
+<h1>丙大山数据资产商城</h1>
+<p class="subtitle">全量 58,614+ 条已入库数据 | 5 档 SKU 按需购买 | 付款后 30 分钟交付</p>
 
-  <div class="cards">
-    
+<div class="flow">
+  <h3>📋 购买流程</h3>
+  <ol>
+    <li>选择商品 → 点「立即购买」</li>
+    <li>支付宝扫码 / 转账至商家 ID <code>2021004132641258</code></li>
+    <li>邮件附付款截图到 <a href="mailto:orders@example.com">orders@example.com</a></li>
+    <li>收到确认后 → 30 分钟内收到商品 JSON 下载链接（24h 有效）</li>
+  </ol>
+</div>
+
+<div class="grid">
     <div class="card card-basic">
       <div class="card-badge">BASIC</div>
       <h2>基础包</h2>
-      <div class="card-price">¥9.9<span class="price-unit">  / 1,000条</span></div>
+      <div class="card-price">¥9.9<span class="price-unit"> </span></div>
       <ul class="card-highlights">
-        <li>📦 <strong>1,000</strong></li>
-        <li>✨ 随机 1,000 条中标供应商记录（跨 8 省抽样），含供应商/地区/金额/日期。适合快速体验与验证数据质量。</li>
-        <li>🕐 生成于 2026-11-18 19:27:52</li>
-        <li>📂 数据源：11_数据资产 SQLite 全量库（只读快照）</li>
-        <li>📄 授权：仅限个人研究使用，禁止二次转售（数据来自公开政府/交易所源）</li>
+        <li>📦 <strong>1,000 条</strong></li>
+        <li>✨ 1,000条政府采购中标记录（浙江/陕西/广东等抽样）</li>
+        <li>🕐 生成于 2026-11-18</li>
+        <li>📂 数据源：CCGP+全国平台30省抽样</li>
+        <li>📄 授权：适合个人研究/小范围测试</li>
       </ul>
       <div class="card-actions">
-        <button class="btn btn-primary" onclick="buyAsset('basic', this)">立即购买</button>
-        <a class="btn btn-dl" href="https://breezesamuel.github.io/geo-audit/data/shop/basic_1000.json" target="_blank" rel="noopener">↓ 获取数据文件</a>
+        <a class="btn btn-primary" href="mailto:orders@example.com?subject=%5B%E4%B8%99%E5%A4%A7%E5%B1%B1%E6%95%B0%E6%8D%AE%5D%20%E5%9F%BA%E7%A1%80%E5%8C%85%20%C2%A59.9&body=%E6%88%91%E8%A6%81%E8%B4%AD%E4%B9%B0%EF%BC%9A%E3%80%90%E5%9F%BA%E7%A1%80%E5%8C%85%E3%80%911%2C000%E6%9D%A1%E6%94%BF%E5%BA%9C%E9%87%87%E8%B4%AD%E4%B8%AD%E6%A0%87%E8%AE%B0%E5%BD%95%EF%BC%88%E6%B5%99%E6%B1%9F/%E9%99%95%E8%A5%BF/%E5%B9%BF%E4%B8%9C%E7%AD%89%E6%8A%BD%E6%A0%B7%EF%BC%89%250d%250a%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A59.90%250d%250a%250d%250a%E6%88%91%E7%9A%84%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1%EF%BC%9A_______________%250d%250a%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%E4%BB%98%E6%AC%BE%E5%90%8E%E8%AF%B7%E9%99%84%E4%BA%A4%E6%98%93%E6%88%AA%E5%9B%BE%E5%88%B0%E6%9C%AC%E9%82%AE%E4%BB%B6%250d%250a%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%A1%AE%E8%AE%A4%E6%94%B6%E6%AC%BE%E5%90%8E30%E5%88%86%E9%92%9F%E5%86%85%E5%8F%91%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%E5%88%B0%E6%9C%AC%E9%82%AE%E7%AE%B1" target="_blank">立即购买</a>
+      </div>
+      
+      <div class="card-pay-hint">
+        💳 <strong>付款方式</strong><br>
+        方式一（推荐）：<a href="https://open.alipay.com/scanpay.htm?appId=2021004132641258" target="_blank" rel="noopener">点我打开支付宝扫码付 ¥9.90</a><br>
+        方式二：支付宝转账至 2021004132641258（商家ID）后邮件确认<br>
+        ⏱️ 付款后30分钟内自动发下载链接到你的邮箱
       </div>
       <div class="card-deliver">
-        <label>📥 交付（付款后输订单号取下载链接）</label>
-        
-        <input type="text" id="deliver-order-basic" placeholder="G1-basic-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
-        basic/standard 已托管 Pages，直接下载；pro 按需生成
-        <button class="btn btn-dl" onclick="deliverAsset('basic', this)">取下载链接</button>
+        📥 交付流程：支付宝付款 → 发截图到 orders@example.com → 收到下载链接
       </div>
-      <div class="card-note">下单后可直接获取（Pages 已托管） · 支付宝扫码付款</div>
+      <div class="card-note">数据来自公开政府/交易所源 · 仅限个人研究使用</div>
     </div>
 
     <div class="card card-standard">
       <div class="card-badge">STANDARD</div>
       <h2>标准包</h2>
-      <div class="card-price">¥99<span class="price-unit">  / 10,000条</span></div>
+      <div class="card-price">¥99<span class="price-unit"> </span></div>
       <ul class="card-highlights">
-        <li>📦 <strong>10,000</strong></li>
-        <li>✨ 随机 10,000 条 + 带 USCC 统一信用代码的企业档案，覆盖更多省份与公告类型。适合批量研究与建模。</li>
-        <li>🕐 生成于 2026-11-18 19:27:52</li>
-        <li>📂 数据源：11_数据资产 SQLite 全量库（只读快照）</li>
-        <li>📄 授权：仅限个人研究使用，禁止二次转售（数据来自公开政府/交易所源）</li>
+        <li>📦 <strong>10,000 条</strong></li>
+        <li>✨ 10,000条中标公告（全行业覆盖）</li>
+        <li>🕐 生成于 2026-11-18</li>
+        <li>📂 数据源：8省直连+全国平台</li>
+        <li>📄 授权：适合企业风控/投标分析</li>
       </ul>
       <div class="card-actions">
-        <button class="btn btn-primary" onclick="buyAsset('standard', this)">立即购买</button>
-        <a class="btn btn-dl" href="https://breezesamuel.github.io/geo-audit/data/shop/standard_10000.json" target="_blank" rel="noopener">↓ 获取数据文件</a>
+        <a class="btn btn-primary" href="mailto:orders@example.com?subject=%5B%E4%B8%99%E5%A4%A7%E5%B1%B1%E6%95%B0%E6%8D%AE%5D%20%E6%A0%87%E5%87%86%E5%8C%85%20%C2%A599&body=%E6%88%91%E8%A6%81%E8%B4%AD%E4%B9%B0%EF%BC%9A%E3%80%90%E6%A0%87%E5%87%86%E5%8C%85%E3%80%9110%2C000%E6%9D%A1%E4%B8%AD%E6%A0%87%E5%85%AC%E5%91%8A%EF%BC%88%E5%85%A8%E8%A1%8C%E4%B8%9A%E8%A6%86%E7%9B%96%EF%BC%89%250d%250a%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A599.00%250d%250a%250d%250a%E6%88%91%E7%9A%84%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1%EF%BC%9A_______________%250d%250a%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%E4%BB%98%E6%AC%BE%E5%90%8E%E8%AF%B7%E9%99%84%E4%BA%A4%E6%98%93%E6%88%AA%E5%9B%BE%E5%88%B0%E6%9C%AC%E9%82%AE%E4%BB%B6%250d%250a%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%A1%AE%E8%AE%A4%E6%94%B6%E6%AC%BE%E5%90%8E30%E5%88%86%E9%92%9F%E5%86%85%E5%8F%91%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%E5%88%B0%E6%9C%AC%E9%82%AE%E7%AE%B1" target="_blank">立即购买</a>
+      </div>
+      
+      <div class="card-pay-hint">
+        💳 <strong>付款方式</strong><br>
+        方式一（推荐）：<a href="https://open.alipay.com/scanpay.htm?appId=2021004132641258" target="_blank" rel="noopener">点我打开支付宝扫码付 ¥99.00</a><br>
+        方式二：支付宝转账至 2021004132641258（商家ID）后邮件确认<br>
+        ⏱️ 付款后30分钟内自动发下载链接到你的邮箱
       </div>
       <div class="card-deliver">
-        <label>📥 交付（付款后输订单号取下载链接）</label>
-        
-        <input type="text" id="deliver-order-standard" placeholder="G1-standard-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
-        basic/standard 已托管 Pages，直接下载；pro 按需生成
-        <button class="btn btn-dl" onclick="deliverAsset('standard', this)">取下载链接</button>
+        📥 交付流程：支付宝付款 → 发截图到 orders@example.com → 收到下载链接
       </div>
-      <div class="card-note">下单后可直接获取（Pages 已托管） · 支付宝扫码付款</div>
+      <div class="card-note">数据来自公开政府/交易所源 · 仅限个人研究使用</div>
     </div>
 
     <div class="card card-pro">
       <div class="card-badge">PRO</div>
-      <h2>专业包</h2>
-      <div class="card-price">¥999<span class="price-unit">  / 53,387条</span></div>
+      <h2>专业USCC包</h2>
+      <div class="card-price">¥999<span class="price-unit"> </span></div>
       <ul class="card-highlights">
-        <li>📦 <strong>53,387</strong></li>
-        <li>✨ 带 USCC 全量 + 全国平台 30 省 + 双公告（约 44,000+ 条）。全量级研究数据，适合深度尽调与风控。</li>
-        <li>🕐 生成于 2026-11-18 19:27:52</li>
-        <li>📂 数据源：11_数据资产 SQLite 全量库（只读快照）</li>
-        <li>📄 授权：仅限个人研究使用，禁止二次转售（数据来自公开政府/交易所源）</li>
+        <li>📦 <strong>53,387 条</strong></li>
+        <li>✨ 53,387条带统一社会信用代码数据（跨源去重）</li>
+        <li>🕐 生成于 2026-11-18</li>
+        <li>📂 数据源：陕西中标+广东许可+全国平台30省聚合</li>
+        <li>📄 授权：适合企业征信/供应商评估</li>
       </ul>
       <div class="card-actions">
-        <button class="btn btn-primary" onclick="buyAsset('pro', this)">立即购买</button>
-        <a class="btn btn-dl" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E4%B8%93%E4%B8%9A%E5%8C%85-PRO%C2%A5999.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E4%B8%93%E4%B8%9A%E5%8C%85%20%28PRO%29%20%E2%80%94%20pro_uscc.json%0A%E6%9D%A1%E6%95%B0%EF%BC%9A53%2C387%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A5999%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank" rel="noopener">↓ 申请获取（按需生成）</a>
+        <a class="btn btn-primary" href="mailto:orders@example.com?subject=%5B%E4%B8%99%E5%A4%A7%E5%B1%B1%E6%95%B0%E6%8D%AE%5D%20%E4%B8%93%E4%B8%9AUSCC%E5%8C%85%20%C2%A5999&body=%E6%88%91%E8%A6%81%E8%B4%AD%E4%B9%B0%EF%BC%9A%E3%80%90%E4%B8%93%E4%B8%9AUSCC%E5%8C%85%E3%80%9153%2C387%E6%9D%A1%E5%B8%A6%E7%BB%9F%E4%B8%80%E7%A4%BE%E4%BC%9A%E4%BF%A1%E7%94%A8%E4%BB%A3%E7%A0%81%E6%95%B0%E6%8D%AE%EF%BC%88%E8%B7%A8%E6%BA%90%E5%8E%BB%E9%87%8D%EF%BC%89%250d%250a%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A5999.00%250d%250a%250d%250a%E6%88%91%E7%9A%84%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1%EF%BC%9A_______________%250d%250a%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%E4%BB%98%E6%AC%BE%E5%90%8E%E8%AF%B7%E9%99%84%E4%BA%A4%E6%98%93%E6%88%AA%E5%9B%BE%E5%88%B0%E6%9C%AC%E9%82%AE%E4%BB%B6%250d%250a%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%A1%AE%E8%AE%A4%E6%94%B6%E6%AC%BE%E5%90%8E30%E5%88%86%E9%92%9F%E5%86%85%E5%8F%91%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%E5%88%B0%E6%9C%AC%E9%82%AE%E7%AE%B1" target="_blank">立即购买</a>
+      </div>
+      
+      <div class="card-pay-hint">
+        💳 <strong>付款方式</strong><br>
+        方式一（推荐）：<a href="https://open.alipay.com/scanpay.htm?appId=2021004132641258" target="_blank" rel="noopener">点我打开支付宝扫码付 ¥999.00</a><br>
+        方式二：支付宝转账至 2021004132641258（商家ID）后邮件确认<br>
+        ⏱️ 付款后30分钟内自动发下载链接到你的邮箱
       </div>
       <div class="card-deliver">
-        <label>📥 交付（付款后输订单号取下载链接）</label>
-        
-        <input type="text" id="deliver-order-pro" placeholder="G1-pro-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
-        按需生成：付款后运行 make_credit_report.py / make_supplier_sku.py / make_supplier_report.py，交付 JSON
-        <button class="btn btn-dl" onclick="deliverAsset('pro', this)">取下载链接</button>
+        📥 交付流程：支付宝付款 → 发截图到 orders@example.com → 收到下载链接
       </div>
-      <div class="card-note">31MB 全量包，付款后按需生成并交付 · 支付宝扫码付款</div>
+      <div class="card-note">数据来自公开政府/交易所源 · 仅限个人研究使用</div>
     </div>
 
     <div class="card card-credit_report">
       <div class="card-badge">CREDIT_REPORT</div>
       <h2>企业征信报告</h2>
-      <div class="card-price">¥2999<span class="price-unit"> / 份</span></div>
+      <div class="card-price">¥2999<span class="price-unit"> /份</span></div>
       <ul class="card-highlights">
-        <li>📦 <strong>按 USCC 单企业生成</strong></li>
-        <li>✨ 按 USCC 查单企业全维度数据（工商/中标/许可/处罚），付费下载 JSON。高价值单 SKU。</li>
-        <li>🕐 生成于 按需生成（make_credit_report.py <USCC>）</li>
-        <li>📂 数据源：11_数据资产 SQLite 全量库（只读快照）</li>
-        <li>📄 授权：仅限购买方用于单一企业尽调/风控/授信，禁止二次转售、禁止批量再分发</li>
+        <li>📦 <strong>按需生成</strong></li>
+        <li>✨ 按USCC查单企业全维度数据（工商+中标+许可+处罚）</li>
+        <li>🕐 生成于 2026-11-18</li>
+        <li>📂 数据源：em_f10+5省中标+广东双公示</li>
+        <li>📄 授权：适合单一企业深度尽调</li>
       </ul>
       <div class="card-actions">
-        <button class="btn btn-primary" onclick="buyAsset('credit_report', this)">立即购买</button>
-        <a class="btn btn-dl" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E4%BC%81%E4%B8%9A%E5%BE%81%E4%BF%A1%E6%8A%A5%E5%91%8A-CREDIT_REPORT%C2%A52999.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E4%BC%81%E4%B8%9A%E5%BE%81%E4%BF%A1%E6%8A%A5%E5%91%8A%20%28CREDIT_REPORT%29%20%E2%80%94%20credit_report%0A%E6%9D%A1%E6%95%B0%EF%BC%9A0%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A52999%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank" rel="noopener">↓ 申请生成（提供 USCC）</a>
+        <a class="btn btn-primary" href="mailto:orders@example.com?subject=%5B%E4%B8%99%E5%A4%A7%E5%B1%B1%E6%95%B0%E6%8D%AE%5D%20%E4%BC%81%E4%B8%9A%E5%BE%81%E4%BF%A1%E6%8A%A5%E5%91%8A%20%C2%A52999&body=%E6%88%91%E8%A6%81%E8%B4%AD%E4%B9%B0%EF%BC%9A%E3%80%90%E4%BC%81%E4%B8%9A%E5%BE%81%E4%BF%A1%E6%8A%A5%E5%91%8A%E3%80%91%E6%8C%89USCC%E6%9F%A5%E5%8D%95%E4%BC%81%E4%B8%9A%E5%85%A8%E7%BB%B4%E5%BA%A6%E6%95%B0%E6%8D%AE%EF%BC%88%E5%B7%A5%E5%95%86%2B%E4%B8%AD%E6%A0%87%2B%E8%AE%B8%E5%8F%AF%2B%E5%A4%84%E7%BD%9A%EF%BC%89%250d%250a%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A52999.00/%E4%BB%BD%250d%250a%250d%250a%E4%BC%81%E4%B8%9AUSCC/%E4%BE%9B%E5%BA%94%E5%95%86%E5%90%8D%EF%BC%9A_______________%250d%250a%E6%88%91%E7%9A%84%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1%EF%BC%9A_______________%250d%250a%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%E4%BB%98%E6%AC%BE%E5%90%8E%E8%AF%B7%E9%99%84%E4%BA%A4%E6%98%93%E6%88%AA%E5%9B%BE%E5%88%B0%E6%9C%AC%E9%82%AE%E4%BB%B6%250d%250a%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%A1%AE%E8%AE%A4%E6%94%B6%E6%AC%BE%E5%90%8E30%E5%88%86%E9%92%9F%E5%86%85%E5%8F%91%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%E5%88%B0%E6%9C%AC%E9%82%AE%E7%AE%B1" target="_blank">立即购买</a>
+      </div>
+      
+      <div class="card-pay-hint">
+        💳 <strong>付款方式</strong><br>
+        方式一（推荐）：<a href="https://open.alipay.com/scanpay.htm?appId=2021004132641258" target="_blank" rel="noopener">点我打开支付宝扫码付 ¥2999.00</a><br>
+        方式二：支付宝转账至 2021004132641258（商家ID）后邮件确认<br>
+        ⏱️ 付款后30分钟内自动发下载链接到你的邮箱
       </div>
       <div class="card-deliver">
-        <label>📥 交付（付款后输订单号取下载链接）</label>
-        <label style="font-size:.8rem">USCC</label> <input type="text" id="deliver-uscc-credit_report" placeholder="18位统一社会信用代码" style="width:220px;padding:6px;border:1px solid var(--border);border-radius:6px">
-        <input type="text" id="deliver-order-credit_report" placeholder="G1-credit_report-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
-        按需生成：付款后运行 make_credit_report.py / make_supplier_sku.py / make_supplier_report.py，交付 JSON
-        <button class="btn btn-dl" onclick="deliverAsset('credit_report', this)">取下载链接</button>
+        📥 交付流程：支付宝付款 → 发截图到 orders@example.com → 收到下载链接
       </div>
-      <div class="card-note">提供 USCC 后，运行 make_credit_report.py 生成 JSON 并交付 · 支付宝扫码付款</div>
+      <div class="card-note">数据来自公开政府/交易所源 · 仅限个人研究使用</div>
     </div>
 
     <div class="card card-supplier_top100">
       <div class="card-badge">SUPPLIER_TOP100</div>
-      <h2>供应商竞争力 Top100</h2>
-      <div class="card-price">¥4999<span class="price-unit"> / 份</span></div>
+      <h2>供应商竞争力Top100</h2>
+      <div class="card-price">¥4999<span class="price-unit"> /份</span></div>
       <ul class="card-highlights">
-        <li>📦 <strong>100 家高频中标企业（count>=3）</strong></li>
-        <li>✨ 跨 5 省中标 + em_f10 上市公司，按中标方企业维度聚合的 Top100 高频中标企业（重复中标次数 / 累计金额 / 地区分布 / 时间区间）。可出「企业竞争力报告」，¥4999/份。</li>
-        <li>🕐 生成于 2026-11-18 17:21:40</li>
-        <li>📂 数据源：11_数据资产 SQLite 全量库（只读快照）→ aggregate_suppliers.py 跨源供应商去重聚合</li>
-        <li>📄 授权：仅限购买方用于单一企业尽调/风控/竞争力评估，禁止二次转售、禁止批量再分发</li>
+        <li>📦 <strong>100 条</strong></li>
+        <li>✨ Top100高频中标供应商完整分析报告</li>
+        <li>🕐 生成于 2026-11-18</li>
+        <li>📂 数据源：5省中标聚合+em_f10交叉验证</li>
+        <li>📄 授权：适合供应链优化/竞品分析</li>
       </ul>
       <div class="card-actions">
-        <button class="btn btn-primary" onclick="buyAsset('supplier_top100', this)">立即购买</button>
-        <a class="btn btn-dl" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9B%20Top100-SUPPLIER_TOP100%C2%A54999.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9B%20Top100%20%28SUPPLIER_TOP100%29%20%E2%80%94%20supplier_top100%0A%E6%9D%A1%E6%95%B0%EF%BC%9A100%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A54999%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank" rel="noopener">↓ 申请获取（企业竞争力报告）</a>
+        <a class="btn btn-primary" href="mailto:orders@example.com?subject=%5B%E4%B8%99%E5%A4%A7%E5%B1%B1%E6%95%B0%E6%8D%AE%5D%20%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9BTop100%20%C2%A54999&body=%E6%88%91%E8%A6%81%E8%B4%AD%E4%B9%B0%EF%BC%9A%E3%80%90%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9BTop100%E3%80%91Top100%E9%AB%98%E9%A2%91%E4%B8%AD%E6%A0%87%E4%BE%9B%E5%BA%94%E5%95%86%E5%AE%8C%E6%95%B4%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A%250d%250a%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A54999.00/%E4%BB%BD%250d%250a%250d%250a%E6%88%91%E7%9A%84%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1%EF%BC%9A_______________%250d%250a%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%E4%BB%98%E6%AC%BE%E5%90%8E%E8%AF%B7%E9%99%84%E4%BA%A4%E6%98%93%E6%88%AA%E5%9B%BE%E5%88%B0%E6%9C%AC%E9%82%AE%E4%BB%B6%250d%250a%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%A1%AE%E8%AE%A4%E6%94%B6%E6%AC%BE%E5%90%8E30%E5%88%86%E9%92%9F%E5%86%85%E5%8F%91%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%E5%88%B0%E6%9C%AC%E9%82%AE%E7%AE%B1" target="_blank">立即购买</a>
+      </div>
+      
+      <div class="card-pay-hint">
+        💳 <strong>付款方式</strong><br>
+        方式一（推荐）：<a href="https://open.alipay.com/scanpay.htm?appId=2021004132641258" target="_blank" rel="noopener">点我打开支付宝扫码付 ¥4999.00</a><br>
+        方式二：支付宝转账至 2021004132641258（商家ID）后邮件确认<br>
+        ⏱️ 付款后30分钟内自动发下载链接到你的邮箱
       </div>
       <div class="card-deliver">
-        <label>📥 交付（付款后输订单号取下载链接）</label>
-        
-        <input type="text" id="deliver-order-supplier_top100" placeholder="G1-supplier_top100-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
-        按需生成：付款后运行 make_credit_report.py / make_supplier_sku.py / make_supplier_report.py，交付 JSON
-        <button class="btn btn-dl" onclick="deliverAsset('supplier_top100', this)">取下载链接</button>
+        📥 交付流程：支付宝付款 → 发截图到 orders@example.com → 收到下载链接
       </div>
-      <div class="card-note">make_supplier_sku.py 已预生成全量 Top100，付款后交付 JSON · 支付宝扫码付款</div>
+      <div class="card-note">数据来自公开政府/交易所源 · 仅限个人研究使用</div>
     </div>
 
     <div class="card card-supplier_report">
       <div class="card-badge">SUPPLIER_REPORT</div>
       <h2>单供应商竞争力报告</h2>
-      <div class="card-price">¥4999<span class="price-unit"> / 份</span></div>
+      <div class="card-price">¥4999<span class="price-unit"> /份</span></div>
       <ul class="card-highlights">
-        <li>📦 <strong>按供应商名单查单家（21,468 家聚合池）</strong></li>
-        <li>✨ 按供应商名单查单家（21,468 家聚合池），出该供应商竞争力全维度报告（中标次数/累计金额/跨地区/时间跨度/百分位评分/行业标签），¥4999/份。</li>
-        <li>🕐 生成于 按需生成（make_supplier_report.py <供应商名>）</li>
-        <li>📂 数据源：11_数据资产 supplier_aggregate.json（aggregate_suppliers.py 跨源供应商去重聚合，21,468 家，只读快照）</li>
-        <li>📄 授权：仅限购买方用于单一企业尽调/风控/竞争力评估，禁止二次转售、禁止批量再分发</li>
+        <li>📦 <strong>按需生成</strong></li>
+        <li>✨ 按供应商名查单家全维度竞争力（次数/金额/地区/时间跨度/评分）</li>
+        <li>🕐 生成于 2026-11-18</li>
+        <li>📂 数据源：supplier_aggregate.json（21,468家聚合池）</li>
+        <li>📄 授权：适合特定供应商背景调查</li>
       </ul>
       <div class="card-actions">
-        <button class="btn btn-primary" onclick="buyAsset('supplier_report', this)">立即购买</button>
-        <a class="btn btn-dl" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E5%8D%95%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9B%E6%8A%A5%E5%91%8A-SUPPLIER_REPORT%C2%A54999.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E5%8D%95%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9B%E6%8A%A5%E5%91%8A%20%28SUPPLIER_REPORT%29%20%E2%80%94%20supplier_report%0A%E6%9D%A1%E6%95%B0%EF%BC%9A21%2C468%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A54999%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank" rel="noopener">↓ 申请生成（提供供应商名）</a>
+        <a class="btn btn-primary" href="mailto:orders@example.com?subject=%5B%E4%B8%99%E5%A4%A7%E5%B1%B1%E6%95%B0%E6%8D%AE%5D%20%E5%8D%95%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9B%E6%8A%A5%E5%91%8A%20%C2%A54999&body=%E6%88%91%E8%A6%81%E8%B4%AD%E4%B9%B0%EF%BC%9A%E3%80%90%E5%8D%95%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9B%E6%8A%A5%E5%91%8A%E3%80%91%E6%8C%89%E4%BE%9B%E5%BA%94%E5%95%86%E5%90%8D%E6%9F%A5%E5%8D%95%E5%AE%B6%E5%85%A8%E7%BB%B4%E5%BA%A6%E7%AB%9E%E4%BA%89%E5%8A%9B%EF%BC%88%E6%AC%A1%E6%95%B0/%E9%87%91%E9%A2%9D/%E5%9C%B0%E5%8C%BA/%E6%97%B6%E9%97%B4%E8%B7%A8%E5%BA%A6/%E8%AF%84%E5%88%86%EF%BC%89%250d%250a%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A54999.00/%E4%BB%BD%250d%250a%250d%250a%E4%BC%81%E4%B8%9AUSCC/%E4%BE%9B%E5%BA%94%E5%95%86%E5%90%8D%EF%BC%9A_______________%250d%250a%E6%88%91%E7%9A%84%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1%EF%BC%9A_______________%250d%250a%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%E4%BB%98%E6%AC%BE%E5%90%8E%E8%AF%B7%E9%99%84%E4%BA%A4%E6%98%93%E6%88%AA%E5%9B%BE%E5%88%B0%E6%9C%AC%E9%82%AE%E4%BB%B6%250d%250a%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%A1%AE%E8%AE%A4%E6%94%B6%E6%AC%BE%E5%90%8E30%E5%88%86%E9%92%9F%E5%86%85%E5%8F%91%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%E5%88%B0%E6%9C%AC%E9%82%AE%E7%AE%B1" target="_blank">立即购买</a>
+      </div>
+      
+      <div class="card-pay-hint">
+        💳 <strong>付款方式</strong><br>
+        方式一（推荐）：<a href="https://open.alipay.com/scanpay.htm?appId=2021004132641258" target="_blank" rel="noopener">点我打开支付宝扫码付 ¥4999.00</a><br>
+        方式二：支付宝转账至 2021004132641258（商家ID）后邮件确认<br>
+        ⏱️ 付款后30分钟内自动发下载链接到你的邮箱
       </div>
       <div class="card-deliver">
-        <label>📥 交付（付款后输订单号取下载链接）</label>
-        <label style="font-size:.8rem">供应商名</label> <input type="text" id="deliver-uscc-supplier_report" placeholder="供应商全称/关键字（模糊匹配）" style="width:220px;padding:6px;border:1px solid var(--border);border-radius:6px">
-        <input type="text" id="deliver-order-supplier_report" placeholder="G1-supplier_report-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
-        按需生成：付款后运行 make_credit_report.py / make_supplier_sku.py / make_supplier_report.py，交付 JSON
-        <button class="btn btn-dl" onclick="deliverAsset('supplier_report', this)">取下载链接</button>
+        📥 交付流程：支付宝付款 → 发截图到 orders@example.com → 收到下载链接
       </div>
-      <div class="card-note">提供供应商名后，运行 make_supplier_report.py 生成 JSON 并交付 · 支付宝扫码付款</div>
-    </div>
-  </div>
+      <div class="card-note">数据来自公开政府/交易所源 · 仅限个人研究使用</div>
+    </div></div>
 
-  <div class="meta-section">
-    <h3>📋 数据说明与购买流程</h3>
-    <div class="meta-grid">
-      <div><strong>数据源</strong>公开政府 / 交易所公告（全国公共资源交易平台 30 省 + 双公告），经 11_数据资产 SQLite 全量库只读快照整理</div>
-      <div><strong>更新时间</strong>2026-11-18 19:27:52（每次全量采集后自动刷新）</div>
-      <div><strong>授权条款</strong>仅限个人研究使用，禁止二次转售</div>
-      <div><strong>收款方式</strong>支付宝扫码（付款后邮件确认交付）</div>
-    </div>
-    <div class="purchase-flow">
-      <strong>购买流程：</strong>
-      <ol>
-        <li>在商品卡片点击「立即购买」（自动调 <code>/api/purchase</code> 生成支付宝收款链接）</li>
-        <li>支付宝扫码付款</li>
-        <li>邮件附付款截图 / 流水号（或 <code>/api/purchase</code> 下单）</li>
-        <li><code>/api/deliver</code> 生成 24h 有效下载链接，交付商品 JSON</li>
-      </ol>
-    </div>
-  </div>
-
-  <footer>
-    © 2026 24xs 数据资产 · 商品目录托管于 GitHub Pages ·
-    <a href="https://breezesamuel.github.io/geo-audit/data/shop/basic_1000.json" style="color:var(--accent)">basic_1000</a> /
-    <a href="https://breezesamuel.github.io/geo-audit/data/shop/standard_10000.json" style="color:var(--accent)">standard_10000</a> /
-    pro_uscc（按需生成） /
-    企业征信报告（按 USCC，¥2999/份） /
-    供应商竞争力 Top100（¥4999/份） /
-    单供应商竞争力报告（按供应商名，¥4999/份）
-  </footer>
+<footer>© 2026 丙大山数据 · 商品托管 GitHub Pages · 支付宝收款已接通</footer>
 </div>
-<script>
-// 收款 API 基址（Vercel 部署后的公网域名）
-var API_BASE = "https://pindashan-geo.vercel.app";
-async function buyAsset(assetId, btn) {
-  var el = btn ? btn : null;
-  if (el) { el.disabled = true; el.textContent = "生成收款链接…"; }
-  var triedApi = false;
-  try {
-    var r = await fetch(API_BASE + "/api/purchase", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ asset_id: assetId })
-    });
-    var d = await r.json();
-    if (d.ok && d.pay_url) {
-      window.open(d.pay_url, "_blank", "width=760,height=620");
-      if (el) { el.disabled = false; el.textContent = "立即购买"; }
-      alert("订单号：" + d.out_trade_no + "
-金额：¥" + d.amount_cny + "
-请在新窗口支付宝扫码付款。
-付款后到下方【交付】区输订单号取下载链接。");
-      var inp = document.getElementById("deliver-order-" + assetId);
-      if (inp) inp.value = d.out_trade_no;
-      return;
-    }
-    triedApi = true;
-  } catch(e) { triedApi = true; }
-  // API 不可达，回退邮件下单
-  if (el) { el.disabled = false; el.textContent = "立即购买"; }
-  fallbackEmailOrder(assetId);
-}
-function fallbackEmailOrder(assetId) {
-  var sku = {"basic":["基础包",9.9],"standard":["标准包",99],"pro":["专业USCC资产包",999],"credit_report":["企业征信报告",2999],"supplier_top100":["供应商竞争力Top100",4999],"supplier_report":["单供应商竞争力报告",4999]};
-  var info = sku[assetId] || [assetId, "?"];
-  var body = "我要购买【" + info[0] + "】¥" + info[1] + "/份
-支付宝付款后请附截图到本邮件，我来生成下载链接。
-如需对公转账请告知账号。";
-  window.location.href = "mailto:" + ORDER_MAIL + "?subject=订单-" + assetId + "-" + info[0] + " ¥" + info[1] + "&body=" + encodeURIComponent(body);
-}
-// 交付：付款后输订单号 → POST /api/deliver → 拿 24h 下载链接
-async function deliverAsset(assetId, btn) {
-  var el = btn ? btn : null;
-  var inp = document.getElementById("deliver-order-" + assetId);
-  var orderNo = inp ? inp.value.trim() : "";
-  if (!orderNo) { alert("请先输入订单号（点「立即购买」自动生成，或手动输入 G1-...）"); return; }
-  if (el) { el.disabled = true; el.textContent = "生成下载链接…"; }
-  try {
-    var body = { out_trade_no: orderNo, asset_id: assetId };
-    if (assetId === "credit_report" || assetId === "supplier_report") {
-      var usccInp = document.getElementById("deliver-uscc-" + assetId);
-      body.uscc = usccInp ? usccInp.value.trim() : "";
-    }
-    var r = await fetch(API_BASE + "/api/deliver", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    });
-    var d = await r.json();
-    if (!d.ok) throw new Error(d.error || "unknown");
-    // 弹出下载链接
-    window.open(d.signed_url || d.download_url, "_blank");
-    alert("下载链接已生成（24h 有效）
-" + (d.signed_url || d.download_url) + "
-" + d.note);
-  } catch (e) {
-    alert("交付失败：" + e.message + "
-请确认订单号正确（格式 G1-{asset}-{时间}-{随机}）。");
-  } finally {
-    if (el) { el.disabled = false; el.textContent = "取下载链接"; }
-  }
-}
-</script>
 </body>
 </html>

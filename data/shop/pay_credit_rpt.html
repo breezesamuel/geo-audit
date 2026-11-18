@@ -2,46 +2,75 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<title>支付 - 企业征信报告</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>安全支付 - 企业征信报告</title>
 <style>
-body{font-family:-apple-system,sans-serif;max-width:500px;margin:40px auto;padding:20px;background:#f5f7fa}
-.card{background:#fff;border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
-h1{text-align:center;color:#1a1a1a;margin-bottom:20px}
-.price-box{background:linear-gradient(135deg,#ff6b00,#ff8f00);color:#fff;padding:25px;border-radius:12px;text-align:center;margin:20px 0}
-.price{font-size:48px;font-weight:bold}
-.order-no{background:#f8f9fa;padding:15px;border-radius:8px;text-align:center;margin:20px 0;font-family:monospace;font-size:18px;color:#ff6b00}
-.btn{display:block;width:100%;padding:16px;background:#ff6b00;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:bold;cursor:pointer;margin:15px 0;text-decoration:none;text-align:center}
-.btn-secondary{background:#fff;color:#ff6b00;border:2px solid #ff6b00}
-.info{font-size:14px;color:#666;line-height:1.8;margin:20px 0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f7fa;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{background:#fff;border-radius:20px;padding:35px;max-width:500px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.header{text-align:center;margin-bottom:25px}
+.icon{font-size:56px;margin-bottom:12px}
+h1{font-size:24px;color:#1a1a1a;margin-bottom:8px}
+.price-box{background:linear-gradient(135deg,#ff6b00,#ff8f00);color:#fff;padding:30px;border-radius:16px;text-align:center;margin:25px 0}
+.price{font-size:52px;font-weight:bold}
+.unit{font-size:18px;opacity:.9}
+.order-info{background:#f8f9fa;border-radius:12px;padding:18px;margin:20px 0;border:1px solid #e9ecef}
+.order-no{font-size:18px;color:#ff6b00;font-weight:bold;font-family:monospace}
+.steps{margin:25px 0}
+.step{display:flex;align-items:flex-start;margin:14px 0}
+.step-num{width:28px;height:28px;border-radius:50%;background:#ff6b00;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-right:12px;flex-shrink:0;font-size:13px}
+.step-text{font-size:15px;color:#333;line-height:1.5}
+.btn-pay{display:block;width:100%;padding:16px;background:#ff6b00;color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer;margin:20px 0;text-decoration:none;text-align:center}
+.btn-pay:hover{background:#e55a00}
+.btn-email{display:block;width:100%;padding:14px;background:#fff;color:#ff6b00;border:2px solid #ff6b00;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin:10px 0;text-decoration:none;text-align:center}
+.trust{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:18px;margin:20px 0;font-size:14px;color:#166534}
+.footer{text-align:center;margin-top:30px;font-size:12px;color:#999;line-height:2}
 </style>
 </head>
 <body>
-<div class="card">
-  <h1>🔐 安全支付</h1>
+<div class="container">
+  <div class="header">
+    <div class="icon">🔒</div>
+    <h1>企业征信报告</h1>
+  </div>
+  
   <div class="price-box">
     <div class="price">¥2999.0</div>
-    <div>企业征信报告</div>
+    <div class="unit">一次性购买 · 永久下载</div>
   </div>
   
-  <div class="order-no">订单号: BD-20261118232818-D35F89</div>
-  
-  <div class="info">
-    <strong>支付方式：</strong><br>
-    1. 支付宝搜索商户ID: <code>2021004132641258</code><br>
-    2. 输入金额 ¥2999.0 完成付款<br>
-    3. 付款后发邮件确认（自动带订单号）
+  <div class="order-info">
+    <div style="font-size:13px;color:#666;margin-bottom:8px">您的订单号（付款后发给客服）：</div>
+    <div class="order-no">BD-20261118233311-13A613</div>
+    <div style="margin-top:10px;font-size:13px;color:#666">商品：企业征信报告 | 金额：¥2999.0</div>
   </div>
   
-  <a class="btn" href="alipays://platformapi/startapp?appId=2021004132641258&subject=企业征信报告&total_amount=2999.0&out_trade_no=BD-20261118232818-D35F89">
-    🔗 打开支付宝付款
+  <div class="steps">
+    <h3 style="margin-bottom:15px;font-size:16px">💳 支付方式：</h3>
+    <div class="step"><div class="step-num">1</div><div class="step-text">点击下方按钮<strong>打开支付宝</strong></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">输入金额 <strong>¥2999.0</strong> 完成付款</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">付款成功后点击「我已付款」发送邮件确认</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">30分钟内发送数据下载链接到你的邮箱</div></div>
+  </div>
+  
+  <a class="btn-pay" href="alipays://platformapi/startapp?appId=2021004132641258&subject=企业征信报告&total_amount=2999.0&out_trade_no=BD-20261118233311-13A613">
+    🔗 打开支付宝立即付款 ¥2999.0
   </a>
   
-  <a class="btn btn-secondary" href="mailto:orders@bingdashan.com?subject=付款确认-BD-20261118232818-D35F89&body=我已付款，订单号：BD-20261118232818-D35F89，商品：企业征信报告，金额：¥2999.0，请发送下载链接到我的邮箱。">
-    📧 我已付款，发送邮件确认
+  <a class="btn-email" href="mailto:YOUR_REAL_EMAIL@gmail.com?subject=付款确认-BD-20261118233311-13A613&body=我已付款%2C订单号%3ABD-20261118233311-13A613%0D%0A商品%3A企业征信报告%0D%0A金额%3A%E%A62999.0%0D%0A请发送下载链接到我的邮箱。">
+    ✅ 我已付款，发送邮件确认
   </a>
   
-  <div class="info" style="margin-top:30px;font-size:13px;color:#999;text-align:center">
-    丙大山数据资产平台 · 30分钟内发货 · 支持退款
+  <div class="trust">
+    ✅ 付款后30分钟内未收到数据，全额退款<br>
+    ✅ 数据来源：全国公共资源交易平台30省+CCGP等公开源<br>
+    ✅ 授权范围：仅限个人研究使用，禁止二次转售
+  </div>
+  
+  <div class="footer">
+    丙大山数据资产平台<br>
+    联系邮箱：<a href="mailto:YOUR_REAL_EMAIL@gmail.com" style="color:#ff6b00">YOUR_REAL_EMAIL@gmail.com</a><br>
+    支付宝商家ID：2021004132641258
   </div>
 </div>
 </body>

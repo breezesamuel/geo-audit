@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>支付 - 企业征信报告</title>
+<style>
+body{font-family:-apple-system,sans-serif;max-width:500px;margin:40px auto;padding:20px;background:#f5f7fa}
+.card{background:#fff;border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+h1{text-align:center;color:#1a1a1a;margin-bottom:20px}
+.price-box{background:linear-gradient(135deg,#ff6b00,#ff8f00);color:#fff;padding:25px;border-radius:12px;text-align:center;margin:20px 0}
+.price{font-size:48px;font-weight:bold}
+.order-no{background:#f8f9fa;padding:15px;border-radius:8px;text-align:center;margin:20px 0;font-family:monospace;font-size:18px;color:#ff6b00}
+.btn{display:block;width:100%;padding:16px;background:#ff6b00;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:bold;cursor:pointer;margin:15px 0;text-decoration:none;text-align:center}
+.btn-secondary{background:#fff;color:#ff6b00;border:2px solid #ff6b00}
+.info{font-size:14px;color:#666;line-height:1.8;margin:20px 0}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🔐 安全支付</h1>
+  <div class="price-box">
+    <div class="price">¥2999.0</div>
+    <div>企业征信报告</div>
+  </div>
+  
+  <div class="order-no">订单号: BD-20261118232818-D35F89</div>
+  
+  <div class="info">
+    <strong>支付方式：</strong><br>
+    1. 支付宝搜索商户ID: <code>2021004132641258</code><br>
+    2. 输入金额 ¥2999.0 完成付款<br>
+    3. 付款后发邮件确认（自动带订单号）
+  </div>
+  
+  <a class="btn" href="alipays://platformapi/startapp?appId=2021004132641258&subject=企业征信报告&total_amount=2999.0&out_trade_no=BD-20261118232818-D35F89">
+    🔗 打开支付宝付款
+  </a>
+  
+  <a class="btn btn-secondary" href="mailto:orders@bingdashan.com?subject=付款确认-BD-20261118232818-D35F89&body=我已付款，订单号：BD-20261118232818-D35F89，商品：企业征信报告，金额：¥2999.0，请发送下载链接到我的邮箱。">
+    📧 我已付款，发送邮件确认
+  </a>
+  
+  <div class="info" style="margin-top:30px;font-size:13px;color:#999;text-align:center">
+    丙大山数据资产平台 · 30分钟内发货 · 支持退款
+  </div>
+</div>
+</body>
+</html>

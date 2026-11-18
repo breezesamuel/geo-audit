@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>付费解锁 - {{PRODUCT_NAME}} | 丙大山数据</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f7fa;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{background:#fff;border-radius:20px;padding:35px;max-width:500px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.header{text-align:center;margin-bottom:25px}
+.icon{font-size:56px;margin-bottom:12px}
+h1{font-size:24px;color:#1a1a1a;margin-bottom:8px}
+.desc{color:#666;font-size:14px;line-height:1.6}
+.price-box{background:linear-gradient(135deg,#ff6b00,#ff8f00);color:#fff;padding:30px;border-radius:16px;text-align:center;margin:25px 0}
+.price{font-size:52px;font-weight:bold}
+.unit{font-size:18px;opacity:.9}
+.order-info{background:#f8f9fa;border-radius:12px;padding:18px;margin:20px 0;border:1px solid #e9ecef}
+.order-no{font-size:18px;color:#ff6b00;font-weight:bold;font-family:monospace}
+.steps{margin:25px 0}
+.step{display:flex;align-items:flex-start;margin:14px 0}
+.step-num{width:28px;height:28px;border-radius:50%;background:#ff6b00;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-right:12px;flex-shrink:0;font-size:13px}
+.step-text{font-size:15px;color:#333;line-height:1.5}
+.qr-section{background:#fff8f0;border:2px dashed #ff6b00;border-radius:16px;padding:30px;margin:25px 0;text-align:center}
+.qr-img{width:200px;height:200px;background:#fff;border:1px solid #ddd;border-radius:8px;margin:15px auto;display:flex;align-items:center;justify-content:center;font-size:60px}
+.btn-pay{display:block;width:100%;padding:16px;background:#ff6b00;color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer;margin:20px 0}
+.btn-email{display:block;width:100%;padding:14px;background:#fff;color:#ff6b00;border:2px solid #ff6b00;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin:10px 0}
+.trust{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:18px;margin:20px 0;font-size:14px;color:#166534}
+.footer{text-align:center;margin-top:30px;font-size:12px;color:#999;line-height:2}
+.copy-btn{background:#1677ff;color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="icon">🔐</div>
+    <h1>{{PRODUCT_NAME}}</h1>
+    <p class="desc">{{PRODUCT_DESC}}</p>
+  </div>
+  
+  <div class="price-box">
+    <div class="price">¥{{PRICE}}</div>
+    <div class="unit">一次性购买 · 永久下载</div>
+  </div>
+  
+  <div class="order-info">
+    <div style="font-size:13px;color:#666;margin-bottom:8px">您的订单号（请保留此号用于售后）：</div>
+    <div class="order-no">{{ORDER_NO}}</div>
+    <button class="copy-btn" onclick="copyOrder()">复制订单号</button>
+  </div>
+  
+  <div class="steps">
+    <h3 style="margin-bottom:15px;font-size:16px">💳 付款步骤：</h3>
+    <div class="step"><div class="step-num">1</div><div class="step-text">打开<strong>支付宝APP</strong></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">点击「扫一扫」→ 扫描下方收款码</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">输入金额 <strong>¥{{PRICE}}</strong> → 确认付款</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">付款成功后点击「我已付款」发送邮件确认</div></div>
+  </div>
+  
+  <div class="qr-section">
+    <div style="font-size:22px;margin-bottom:10px">💳 支付宝收款码</div>
+    <div class="qr-img">📱</div>
+    <div style="font-size:14px;color:#666;margin-top:10px">商户ID：<strong>{{ALIPAY_APPID}}</strong></div>
+    <div style="font-size:13px;color:#999;margin-top:8px">收款人：丙大山数据资产平台</div>
+    <div style="margin-top:15px;padding:10px;background:#fff;border-radius:6px;font-size:12px;color:#666">
+      ⚠️ 请先在支付宝APP中生成你的个人收款码<br>
+      然后把图片放到页面指定位置，或点击下方按钮直接跳转支付宝
+    </div>
+  </div>
+  
+  <button class="btn-pay" onclick="openAlipay()">🔗 打开支付宝付款 ¥{{PRICE}}</button>
+  <button class="btn-email" onclick="sendEmail()">✅ 我已付款，发送邮件确认</button>
+  
+  <div class="trust">
+    ✅ 付款后30分钟内未收到数据，全额退款<br>
+    ✅ 数据来源：全国公共资源交易平台30省 + CCGP等公开源<br>
+    ✅ 授权范围：仅限个人研究使用，禁止二次转售
+  </div>
+  
+  <div class="footer">
+    丙大山数据资产平台<br>
+    联系邮箱：<a href="mailto:{{RECEIVER_EMAIL}}" style="color:#ff6b00">{{RECEIVER_EMAIL}}</a><br>
+    支付宝商家ID：{{ALIPAY_APPID}}
+  </div>
+</div>
+
+<script>
+var ORDER_NO='{{ORDER_NO}}';
+var PRICE={{PRICE}};
+function copyOrder(){
+  navigator.clipboard.writeText(ORDER_NO).then(function(){
+    alert('订单号已复制：'+ORDER_NO+'\n请粘贴到邮件主题中以便快速处理');
+  });
+}
+function openAlipay(){
+  window.location.href='alipays://platformapi/startapp?appId={{ALIPAY_APPID}}';
+  setTimeout(function(){
+    window.open('https://auth.alipay.com/login/index.htm','_blank');
+  },1500);
+}
+function sendEmail(){
+  var subject=encodeURIComponent('[丙大山数据] 付款确认 - {{PRODUCT_NAME}}');
+  var body=encodeURIComponent(
+    '您好，\n\n我已通过支付宝完成付款：\n'
+    +'订单号：'+ORDER_NO+'\n'
+    +'商品：{{PRODUCT_NAME}}\n'
+    +'金额：¥'+PRICE+'\n\n'
+    +'以下是支付宝交易截图（请见附件）...\n\n'
+    +'请尽快发送数据下载链接到我的邮箱。\n\n'
+    +'谢谢！\n'
+    +'买家邮箱：【请填写你的邮箱】'
+  );
+  window.location.href='mailto:{{RECEIVER_EMAIL}}?subject='+subject+'&body='+body;
+}
+</script>
+</body>
+</html>

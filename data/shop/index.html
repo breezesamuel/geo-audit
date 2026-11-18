@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据商品目录 — 中标供应商/企业档案数据集</title>
+<meta name="description" content="3 档可购买数据商品：基础包 1,000 条 ¥9.9、标准包 10,000 条 ¥99、专业包 44,000+ 条 ¥999。数据来自公开政府/交易所源，仅限个人研究使用。">
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --text:#e6edf3; --muted:#8b949e; --accent:#2f81f7; --green:#3fb950; --amber:#d29922; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.6; padding: 24px; }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 28px; }
+  header h1 { font-size: 1.7rem; margin-bottom: 8px; }
+  header p.sub { color: var(--muted); font-size: .95rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 28px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 22px; position: relative; }
+  .card-basic { border-top: 3px solid var(--green); }
+  .card-standard { border-top: 3px solid var(--amber); }
+  .card-pro { border-top: 3px solid var(--accent); }
+  .card-badge { position: absolute; top: 14px; right: 16px; font-size: .7rem; letter-spacing: .1em; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
+  .card h2 { font-size: 1.25rem; margin-bottom: 6px; }
+  .card-price { font-size: 2rem; font-weight: 700; margin: 10px 0 14px; }
+  .price-unit { font-size: .85rem; color: var(--muted); font-weight: 400; }
+  .card-highlights { list-style: none; font-size: .88rem; color: var(--muted); margin-bottom: 18px; }
+  .card-highlights li { margin-bottom: 7px; }
+  .card-highlights strong { color: var(--text); }
+  .card-actions { display: flex; flex-direction: column; gap: 8px; }
+  .btn { display: inline-block; text-align: center; text-decoration: none; padding: 10px 14px; border-radius: 8px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { filter: brightness(1.1); }
+  .btn-dl { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-dl:hover { border-color: var(--accent); color: var(--accent); }
+  .card-note { margin-top: 12px; font-size: .78rem; color: var(--muted); text-align: center; }
+  .meta-section { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .meta-section h3 { font-size: 1rem; margin-bottom: 10px; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 10px; font-size: .85rem; color: var(--muted); }
+  .meta-grid div strong { color: var(--text); display: block; }
+  .purchase-flow { margin-top: 16px; font-size: .85rem; color: var(--muted); }
+  .purchase-flow ol { padding-left: 20px; }
+  .purchase-flow li { margin-bottom: 5px; }
+  footer { text-align: center; color: var(--muted); font-size: .78rem; margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>📊 数据商品目录</h1>
+    <p class="sub">中标供应商 / 企业档案数据集 — 3 档可立即购买 · 全量 55,217 条已入库 · 更新 2026-11-18 12:21:18</p>
+  </header>
+
+  <div class="cards">
+    
+    <div class="card card-basic">
+      <div class="card-badge">BASIC</div>
+      <h2>基础包</h2>
+      <div class="card-price">¥9.9<span class="price-unit"> / 1,000条</span></div>
+      <ul class="card-highlights">
+        <li>📦 <strong>1,000 条</strong> 数据记录</li>
+        <li>✨ 随机 1,000 条中标供应商记录（跨 8 省抽样），含供应商/地区/金额/日期。适合快速体验与验证数据质量。</li>
+        <li>🕐 生成于 2026-11-18 12:21:18</li>
+        <li>📂 数据源：11_数据资产 SQLite 全量库（只读快照）</li>
+        <li>📄 授权：仅限个人研究使用，禁止二次转售（数据来自公开政府/交易所源）</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn btn-primary" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E5%9F%BA%E7%A1%80%E5%8C%85-BASIC%C2%A59.9&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%8C%85%20%28BASIC%29%20%E2%80%94%20basic_1000.json%0A%E6%9D%A1%E6%95%B0%EF%BC%9A1%2C000%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A59.9%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank">立即购买</a>
+        <a class="btn btn-dl" href="https://breezesamuel.github.io/geo-audit/data/shop/basic_1000.json" target="_blank" rel="noopener">↓ 获取数据文件</a>
+      </div>
+      <div class="card-note">下单后可直接获取（Pages 已托管） · 支付宝扫码付款</div>
+    </div>
+
+    <div class="card card-standard">
+      <div class="card-badge">STANDARD</div>
+      <h2>标准包</h2>
+      <div class="card-price">¥99<span class="price-unit"> / 10,000条</span></div>
+      <ul class="card-highlights">
+        <li>📦 <strong>10,000 条</strong> 数据记录</li>
+        <li>✨ 随机 10,000 条 + 带 USCC 统一信用代码的企业档案，覆盖更多省份与公告类型。适合批量研究与建模。</li>
+        <li>🕐 生成于 2026-11-18 12:21:18</li>
+        <li>📂 数据源：11_数据资产 SQLite 全量库（只读快照）</li>
+        <li>📄 授权：仅限个人研究使用，禁止二次转售（数据来自公开政府/交易所源）</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn btn-primary" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E6%A0%87%E5%87%86%E5%8C%85-STANDARD%C2%A599.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E6%A0%87%E5%87%86%E5%8C%85%20%28STANDARD%29%20%E2%80%94%20standard_10000.json%0A%E6%9D%A1%E6%95%B0%EF%BC%9A10%2C000%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A599%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank">立即购买</a>
+        <a class="btn btn-dl" href="https://breezesamuel.github.io/geo-audit/data/shop/standard_10000.json" target="_blank" rel="noopener">↓ 获取数据文件</a>
+      </div>
+      <div class="card-note">下单后可直接获取（Pages 已托管） · 支付宝扫码付款</div>
+    </div>
+
+    <div class="card card-pro">
+      <div class="card-badge">PRO</div>
+      <h2>专业包</h2>
+      <div class="card-price">¥999<span class="price-unit"> / 44,217条</span></div>
+      <ul class="card-highlights">
+        <li>📦 <strong>44,217 条</strong> 数据记录</li>
+        <li>✨ 带 USCC 全量 + 全国平台 30 省 + 双公告（约 44,000+ 条）。全量级研究数据，适合深度尽调与风控。</li>
+        <li>🕐 生成于 2026-11-18 12:21:18</li>
+        <li>📂 数据源：11_数据资产 SQLite 全量库（只读快照）</li>
+        <li>📄 授权：仅限个人研究使用，禁止二次转售（数据来自公开政府/交易所源）</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn btn-primary" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E4%B8%93%E4%B8%9A%E5%8C%85-PRO%C2%A5999.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E4%B8%93%E4%B8%9A%E5%8C%85%20%28PRO%29%20%E2%80%94%20pro_uscc.json%0A%E6%9D%A1%E6%95%B0%EF%BC%9A44%2C217%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A5999%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank">立即购买</a>
+        <a class="btn btn-dl" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E4%B8%93%E4%B8%9A%E5%8C%85-PRO%C2%A5999.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E4%B8%93%E4%B8%9A%E5%8C%85%20%28PRO%29%20%E2%80%94%20pro_uscc.json%0A%E6%9D%A1%E6%95%B0%EF%BC%9A44%2C217%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A5999%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank" rel="noopener">↓ 申请获取（按需生成）</a>
+      </div>
+      <div class="card-note">31MB 全量包，付款后按需生成并交付 · 支付宝扫码付款</div>
+    </div>
+  </div>
+
+  <div class="meta-section">
+    <h3>📋 数据说明与购买流程</h3>
+    <div class="meta-grid">
+      <div><strong>数据源</strong>公开政府 / 交易所公告（全国公共资源交易平台 30 省 + 双公告），经 11_数据资产 SQLite 全量库只读快照整理</div>
+      <div><strong>更新时间</strong>2026-11-18 12:21:18（每次全量采集后自动刷新）</div>
+      <div><strong>授权条款</strong>仅限个人研究使用，禁止二次转售</div>
+      <div><strong>收款方式</strong>支付宝扫码（付款后邮件确认交付）</div>
+    </div>
+    <div class="purchase-flow">
+      <strong>购买流程：</strong>
+      <ol>
+        <li>在商品卡片点击「立即购买」（mailto 订单）</li>
+        <li>支付宝扫码付款</li>
+        <li>邮件附付款截图 / 流水号（或 <code>/api/purchase</code> 下单）</li>
+        <li><code>/api/deliver</code> 生成 24h 有效下载链接，交付商品 JSON</li>
+      </ol>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 24xs 数据资产 · 商品目录托管于 GitHub Pages ·
+    <a href="https://breezesamuel.github.io/geo-audit/data/shop/basic_1000.json" style="color:var(--accent)">basic_1000</a> /
+    <a href="https://breezesamuel.github.io/geo-audit/data/shop/standard_10000.json" style="color:var(--accent)">standard_10000</a> /
+    pro_uscc（按需生成）
+  </footer>
+</div>
+</body>
+</html>

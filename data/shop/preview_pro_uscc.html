@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>USCC企业数据库 - 免费预览</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f7fa;padding:20px}
+.container{max-width:800px;margin:0 auto;background:#fff;border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+h1{color:#1a1a1a;margin-bottom:10px;font-size:28px}
+.subtitle{color:#666;margin-bottom:25px;font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:25px 0}
+.stat-card{background:#f8f9fa;border-radius:12px;padding:20px;text-align:center}
+.stat-value{font-size:32px;font-weight:bold;color:#1677ff}
+.stat-label{font-size:13px;color:#666;margin-top:5px}
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+.data-table th{background:#fafafa;padding:12px;text-align:left;font-weight:600;color:#333;border-bottom:2px solid #eee}
+.data-table td{padding:12px;border-bottom:1px solid #eee;color:#555}
+.data-table tr:hover{background:#f8f9ff}
+.blurred{filter:blur(5px);user-select:none;opacity:.6}
+.unlock-overlay{position:relative;margin-top:30px;padding:30px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;color:#fff;text-align:center}
+.unlock-price{font-size:48px;font-weight:bold;margin:15px 0}
+.unlock-btn{display:inline-block;padding:14px 40px;background:#fff;color:#764ba2;border-radius:30px;font-size:17px;font-weight:bold;text-decoration:none;margin-top:15px;transition:transform .2s}
+.unlock-btn:hover{transform:scale(1.05)}
+.trust-badges{display:flex;justify-content:center;gap:30px;margin-top:20px;font-size:13px;opacity:.9}
+.footer{text-align:center;margin-top:30px;font-size:12px;color:#999}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📊 USCC企业数据库</h1>
+  <p class="subtitle">带统一社会信用代码的硬数据 · 共 53,387 条记录</p>
+  
+  <div class="stats">
+    <div class="stat-card"><div class="stat-value">53,387</div><div class="stat-label">总记录数</div></div>
+    <div class="stat-card"><div class="stat-value">30+</div><div class="stat-label">覆盖省份</div></div>
+    <div class="stat-card"><div class="stat-value">41%</div><div class="stat-label">重复中标率</div></div>
+  </div>
+  
+  <table class="data-table">
+    <tr><th>#</th><th>标题</th><th>地区</th><th>日期</th><th>预估金额</th></tr>
+    <tr><td>1</td><td>中国电信股份有限公司网络设备采购项目中标结果公告</td><td>广东省深圳市</td><td>2026-11-18</td><td>¥1,520万</td></tr>
+    <tr><td>2</td><td>中国移动通信集团广东有限公司5G基站建设工程成交公告</td><td>广州市</td><td>2026-11-17</td><td class="blurred">¥9,580万</td></tr>
+    <tr><td>3</td><td class="blurred">浙江省人民医院医疗设备采购中标公告（部分内容隐藏）</td><td class="blurred">杭州市</td><td class="blurred">2026-11-16</td><td class="blurred">¥2,340万</td></tr>
+    <tr><td>4-10</td><td colspan="4" style="text-align:center;color:#999">......（完整版需付费解锁，见下方）......</td></tr>
+  </table>
+  
+  <div class="unlock-overlay">
+    <div style="font-size:18px;opacity:.9">🔒 解锁全部 53,387 条记录 + USCC + 金额字段</div>
+    <div class="unlock-price">¥999.0</div>
+    <div style="font-size:14px;opacity:.8">支持支付宝 · 30分钟发货 · 永久下载</div>
+    <a class="unlock-btn" href="/paywall/pro_uscc.html">立即付费解锁 →</a>
+    <div class="trust-badges">
+      <span>✓ 官方数据源</span>
+      <span>✓ 可交叉验证</span>
+      <span>✓ 含USCC编码</span>
+    </div>
+  </div>
+  
+  <div class="footer">
+    © 2026 丙大山数据资产 · GitHub Pages托管 · 支付宝收款ID: 2021004132641258<br>
+    数据来源：全国公共资源交易平台、ccgp.gov.cn、em_f10等公开渠道
+  </div>
+</div>
+</body>
+</html>

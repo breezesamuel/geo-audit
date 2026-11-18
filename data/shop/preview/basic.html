@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>基础数据预览包 - 免费预览</title>
+<style>
+body{font-family:-apple-system,sans-serif;max-width:800px;margin:40px auto;padding:20px;background:#f5f5f5}
+.card{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+h1{color:#1a1a1a}
+.paid-blur{filter:blur(6px);user-select:none}
+.overlay{position:relative;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:30px;border-radius:12px;text-align:center;margin-top:20px}
+.btn{display:inline-block;padding:12px 32px;background:#fff;color:#764ba2;border-radius:25px;text-decoration:none;font-weight:bold;margin-top:15px}
+.data-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:14px}
+.data-table th{background:#f0f0f0;padding:10px;text-align:left}
+.data-table td{padding:10px;border-bottom:1px solid #eee}
+.price-tag{font-size:2rem;font-weight:bold;color:#e74c3c}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>📊 基础数据预览包 — 免费预览版</h1>
+  <p>共包含 <strong>1,000条政府采购中标公告抽样</strong></p>
+  <table class="data-table">
+    <tr><th>序号</th><th>标题（部分打码）</th><th>地区</th><th>日期</th></tr>
+    <!-- 模拟前10条数据（实际应从DB取） -->
+    <tr><td>1</td><td class="paid-blur">中国电信股份有限公司2026年网络设备采购项目中标公告</td><td class="paid-blur">广东省</td><td class="paid-blur">2026-11-15</td></tr>
+    <tr><td>2</td><td class="paid-blur">中国移动通信集团广东有限公司5G基站建设工程中标结果公告</td><td class="paid-blur">深圳市</td><td class="paid-blur">2026-11-14</td></tr>
+    <tr><td>3</td><td>......（完整版需付费解锁）......</td><td>-</td><td>-</td></tr>
+  </table>
+  
+  <div class="overlay">
+    <p>🔒 完整数据包含 53,387 条带 USCC 企业记录</p>
+    <p class="price-tag">¥9.9 起</p>
+    <p style="font-size:.9rem;opacity:.9">支持支付宝扫码 · 付款后30分钟内发下载链接到你的邮箱</p>
+    <a class="btn" href="/paywall/basic.html">立即付费解锁 →</a>
+  </div>
+  
+  <p style="margin-top:20px;font-size:.85rem;color:#666">
+    数据来源：全国公共资源交易平台30省 + 陕西/浙江/广东等直连采集器<br>
+    授权范围：仅限购买方用于研究/风控/授信，禁止二次转售
+  </p>
+</div>
+</body>
+</html>

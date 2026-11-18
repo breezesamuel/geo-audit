@@ -243,6 +243,7 @@ var API_BASE = "https://pindashan-geo.vercel.app";
 async function buyAsset(assetId, btn) {
   var el = btn ? btn : null;
   if (el) { el.disabled = true; el.textContent = "生成收款链接…"; }
+  var triedApi = false;
   try {
     var r = await fetch(API_BASE + "/api/purchase", {
       method: "POST",
@@ -250,29 +251,30 @@ async function buyAsset(assetId, btn) {
       body: JSON.stringify({ asset_id: assetId })
     });
     var d = await r.json();
-    if (!d.ok) throw new Error(d.error || "unknown");
-    // 弹窗口打开支付宝收款链接
-    if (d.pay_url) {
+    if (d.ok && d.pay_url) {
       window.open(d.pay_url, "_blank", "width=760,height=620");
       if (el) { el.disabled = false; el.textContent = "立即购买"; }
-      // 提示付款后到下方「交付」区输订单号取下载链接
       alert("订单号：" + d.out_trade_no + "
 金额：¥" + d.amount_cny + "
 请在新窗口支付宝扫码付款。
 付款后到下方【交付】区输订单号取下载链接。");
-      // 自动填入订单号到交付输入框
       var inp = document.getElementById("deliver-order-" + assetId);
       if (inp) inp.value = d.out_trade_no;
-    } else {
-      if (el) { el.disabled = false; el.textContent = "立即购买"; }
-      alert("未生成 pay_url（收款 API 未配密钥？）
-订单号：" + d.out_trade_no);
+      return;
     }
-  } catch (e) {
-    if (el) { el.disabled = false; el.textContent = "立即购买"; }
-    alert("下单失败：" + e.message + "
-请检查网络或稍后重试。");
-  }
+    triedApi = true;
+  } catch(e) { triedApi = true; }
+  // API 不可达，回退邮件下单
+  if (el) { el.disabled = false; el.textContent = "立即购买"; }
+  fallbackEmailOrder(assetId);
+}
+function fallbackEmailOrder(assetId) {
+  var sku = {"basic":["基础包",9.9],"standard":["标准包",99],"pro":["专业USCC资产包",999],"credit_report":["企业征信报告",2999],"supplier_top100":["供应商竞争力Top100",4999],"supplier_report":["单供应商竞争力报告",4999]};
+  var info = sku[assetId] || [assetId, "?"];
+  var body = "我要购买【" + info[0] + "】¥" + info[1] + "/份
+支付宝付款后请附截图到本邮件，我来生成下载链接。
+如需对公转账请告知账号。";
+  window.location.href = "mailto:" + ORDER_MAIL + "?subject=订单-" + assetId + "-" + info[0] + " ¥" + info[1] + "&body=" + encodeURIComponent(body);
 }
 // 交付：付款后输订单号 → POST /api/deliver → 拿 24h 下载链接
 async function deliverAsset(assetId, btn) {

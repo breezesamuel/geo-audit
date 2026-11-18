@@ -3,125 +3,114 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>付费解锁 - 标准数据包</title>
+<title>付费解锁 - 标准数据包 | 丙大山数据</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0f2f5;min-height:100vh;display:flex;align-items:center;justify-content:center}
-.container{background:#fff;border-radius:20px;padding:40px;max-width:480px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,.1)}
-.header{text-align:center;margin-bottom:30px}
-.product-icon{font-size:60px;margin-bottom:15px}
-.product-name{font-size:24px;font-weight:bold;color:#1a1a1a;margin-bottom:8px}
-.product-desc{color:#666;font-size:14px;line-height:1.6}
-.price-display{text-align:center;padding:30px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;margin:20px 0}
-.price-amount{font-size:48px;font-weight:bold;color:#ff6b00}
-.price-unit{font-size:20px;color:#666}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f7fa;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{background:#fff;border-radius:20px;padding:35px;max-width:500px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.header{text-align:center;margin-bottom:25px}
+.icon{font-size:56px;margin-bottom:12px}
+h1{font-size:24px;color:#1a1a1a;margin-bottom:8px}
+.desc{color:#666;font-size:14px;line-height:1.6}
+.price-box{background:linear-gradient(135deg,#ff6b00,#ff8f00);color:#fff;padding:30px;border-radius:16px;text-align:center;margin:25px 0}
+.price{font-size:52px;font-weight:bold}
+.unit{font-size:18px;opacity:.9}
+.order-info{background:#f8f9fa;border-radius:12px;padding:18px;margin:20px 0;border:1px solid #e9ecef}
+.order-no{font-size:18px;color:#ff6b00;font-weight:bold;font-family:monospace}
 .steps{margin:25px 0}
-.step{display:flex;align-items:flex-start;margin:15px 0}
-.step-num{width:28px;height:28px;border-radius:50%;background:#ff6b00;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-right:15px;flex-shrink:0;font-size:14px}
+.step{display:flex;align-items:flex-start;margin:14px 0}
+.step-num{width:28px;height:28px;border-radius:50%;background:#ff6b00;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-right:12px;flex-shrink:0;font-size:13px}
 .step-text{font-size:15px;color:#333;line-height:1.5}
-.alipay-section{background:#f8f8f8;border-radius:12px;padding:25px;margin:25px 0;text-align:center}
-.alipay-logo{font-size:24px;margin-bottom:15px}
-.qr-placeholder{width:200px;height:200px;background:#fff;border:2px dashed #ddd;border-radius:8px;margin:15px auto;display:flex;align-items:center;justify-content:center;font-size:14px;color:#999}
-.scan-hint{font-size:13px;color:#666;margin-top:10px}
-.btn-primary{display:block;width:100%;padding:16px;background:#1677ff;color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer;margin:20px 0;transition:background .2s}
-.btn-primary:hover{background:#0958d9}
-.btn-secondary{display:block;width:100%;padding:14px;background:#fff;color:#1677ff;border:2px solid #1677ff;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin:10px 0;transition:all .2s}
-.btn-secondary:hover{background:#f0f7ff}
-.order-info{background:#fff8f0;border:1px solid #ffd591;border-radius:8px;padding:15px;margin:20px 0;font-size:13px;color:#666}
-.order-info code{background:#f0f0f0;padding:2px 6px;border-radius:4px;font-family:monospace}
-.footer{text-align:center;margin-top:30px;font-size:12px;color:#999;line-height:1.8}
-.success-msg{display:none;background:#f6ffed;border:1px solid #b7eb8f;border-radius:8px;padding:20px;margin:20px 0;text-align:center}
-.success-msg.show{display:block}
+.qr-section{background:#fff8f0;border:2px dashed #ff6b00;border-radius:16px;padding:30px;margin:25px 0;text-align:center}
+.qr-img{width:200px;height:200px;background:#fff;border:1px solid #ddd;border-radius:8px;margin:15px auto;display:flex;align-items:center;justify-content:center;font-size:60px}
+.btn-pay{display:block;width:100%;padding:16px;background:#ff6b00;color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer;margin:20px 0}
+.btn-email{display:block;width:100%;padding:14px;background:#fff;color:#ff6b00;border:2px solid #ff6b00;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin:10px 0}
+.trust{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:18px;margin:20px 0;font-size:14px;color:#166534}
+.footer{text-align:center;margin-top:30px;font-size:12px;color:#999;line-height:2}
+.copy-btn{background:#1677ff;color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;margin-top:10px}
 </style>
 </head>
 <body>
 <div class="container">
   <div class="header">
-    <div class="product-icon">🔐</div>
-    <h1 class="product-name">标准数据包</h1>
-    <p class="product-desc">全行业中标公告+地区分布</p>
+    <div class="icon">🔐</div>
+    <h1>标准数据包</h1>
+    <p class="desc">全行业中标公告+地区分布</p>
   </div>
   
-  <div class="price-display">
-    <span class="price-amount">¥99.0</span>
-    <span class="price-unit">/份</span>
+  <div class="price-box">
+    <div class="price">¥99.0</div>
+    <div class="unit">一次性购买 · 永久下载</div>
+  </div>
+  
+  <div class="order-info">
+    <div style="font-size:13px;color:#666;margin-bottom:8px">您的订单号（请保留此号用于售后）：</div>
+    <div class="order-no">BD-20261118231843-C9A5CE</div>
+    <button class="copy-btn" onclick="copyOrder()">复制订单号</button>
   </div>
   
   <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-text">扫描下方二维码或使用<a href="https://auth.alipay.com/login/index.htm?app_auth_type=APP_AUTH_TYPE_QRCODE&app_id=2021004132641258&redirect_uri=https%3A%2F%2Fopenapi.alipay.com%2Fgateway.do" target="_blank">支付宝扫码付</a></div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-text">付款完成后截图交易凭证</div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-text">将截图发送至 <strong>orders@bingdashan.com</strong>，30分钟内收到数据下载链接</div>
+    <h3 style="margin-bottom:15px;font-size:16px">💳 付款步骤：</h3>
+    <div class="step"><div class="step-num">1</div><div class="step-text">打开<strong>支付宝APP</strong></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">点击「扫一扫」→ 扫描下方收款码</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">输入金额 <strong>¥99.0</strong> → 确认付款</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">付款成功后点击「我已付款」发送邮件确认</div></div>
+  </div>
+  
+  <div class="qr-section">
+    <div style="font-size:22px;margin-bottom:10px">💳 支付宝收款码</div>
+    <div class="qr-img">📱</div>
+    <div style="font-size:14px;color:#666;margin-top:10px">商户ID：<strong>2021004132641258</strong></div>
+    <div style="font-size:13px;color:#999;margin-top:8px">收款人：丙大山数据资产平台</div>
+    <div style="margin-top:15px;padding:10px;background:#fff;border-radius:6px;font-size:12px;color:#666">
+      ⚠️ 请先在支付宝APP中生成你的个人收款码<br>
+      然后把图片放到页面指定位置，或点击下方按钮直接跳转支付宝
     </div>
   </div>
   
-  <div class="alipay-section">
-    <div class="alipay-logo">💳 支付宝收款</div>
-    <div class="qr-placeholder">
-      <div>
-        <div style="font-size:40px;margin-bottom:10px">📱</div>
-        <div>扫码付 ¥99.0</div>
-        <div style="font-size:12px;color:#999;margin-top:5px">商户ID: 2021004132641258</div>
-      </div>
-    </div>
-    <div class="scan-hint">打开支付宝APP → 扫一扫 → 付款</div>
-  </div>
+  <button class="btn-pay" onclick="openAlipay()">🔗 打开支付宝付款 ¥99.0</button>
+  <button class="btn-email" onclick="sendEmail()">✅ 我已付款，发送邮件确认</button>
   
-  <button class="btn-primary" onclick="copyOrderInfo()">📋 复制订单信息发邮件</button>
-  <button class="btn-secondary" onclick="window.open('mailto:orders@bingdashan.com?subject=%E6%94%AF%E4%BB%98%E7%A1%AE%E8%AE%A4-%7Bprod%5B'name'%5D%7D&body=%E6%88%91%E5%B7%B2%E4%BB%98%E6%AC%BE%EF%BC%81%E4%B8%8B%E9%9D%A2%E6%98%AF%E4%BA%A4%E6%98%93%E6%88%AA%E5%9B%BE...')">📧 直接发邮件确认</button>
-  
-  <div class="order-info">
-    <strong>订单号：</strong><code id="orderNo">PD-20261118230734-8E48BE</code><br>
-    <strong>商品：</strong>标准数据包（¥99.0）<br>
-    <strong>有效期：</strong>付款后30分钟内发货<br>
-    <strong>授权范围：</strong>仅限个人研究使用，禁止二次转售
-  </div>
-  
-  <div class="success-msg" id="successMsg">
-    <div style="font-size:40px;margin-bottom:10px">✅</div>
-    <div>订单信息已复制！请打开邮箱发送邮件附件。</div>
+  <div class="trust">
+    ✅ 付款后30分钟内未收到数据，全额退款<br>
+    ✅ 数据来源：全国公共资源交易平台30省 + CCGP等公开源<br>
+    ✅ 授权范围：仅限个人研究使用，禁止二次转售
   </div>
   
   <div class="footer">
-    丙大山数据资产平台 · 技术支持：AI自动化采集<br>
-    数据来源：全国公共资源交易平台30省 + CCGP + em_f10等公开源<br>
-    收款方：支付宝商家ID 2021004132641258
+    丙大山数据资产平台<br>
+    联系邮箱：<a href="mailto:orders@bingdashan.com" style="color:#ff6b00">orders@bingdashan.com</a><br>
+    支付宝商家ID：2021004132641258
   </div>
 </div>
 
 <script>
-function copyOrderInfo() {
-  var orderNo = 'PD-20261118230734-8E48BE';
-  var subject = encodeURIComponent('[丙大山数据] 付款确认 - 标准数据包');
-  var body = encodeURIComponent(
-    '您好，
-
-我已通过支付宝完成付款：
-' +
-    '订单号：' + orderNo + '
-' +
-    '商品：标准数据包
-' +
-    '金额：¥99.0
-
-' +
-    '以下是支付宝交易截图（请见附件）...
-
-' +
-    '请尽快发送数据下载链接到我的邮箱。
-
-' +
-    '谢谢！'
+var ORDER_NO='BD-20261118231843-C9A5CE';
+var PRICE=99.0;
+function copyOrder(){
+  navigator.clipboard.writeText(ORDER_NO).then(function(){
+    alert('订单号已复制：'+ORDER_NO+'\n请粘贴到邮件主题中以便快速处理');
+  });
+}
+function openAlipay(){
+  window.location.href='alipays://platformapi/startapp?appId=2021004132641258';
+  setTimeout(function(){
+    window.open('https://auth.alipay.com/login/index.htm','_blank');
+  },1500);
+}
+function sendEmail(){
+  var subject=encodeURIComponent('[丙大山数据] 付款确认 - 标准数据包');
+  var body=encodeURIComponent(
+    '您好，\n\n我已通过支付宝完成付款：\n'
+    +'订单号：'+ORDER_NO+'\n'
+    +'商品：标准数据包\n'
+    +'金额：¥'+PRICE+'\n\n'
+    +'以下是支付宝交易截图（请见附件）...\n\n'
+    +'请尽快发送数据下载链接到我的邮箱。\n\n'
+    +'谢谢！\n'
+    +'买家邮箱：【请填写你的邮箱】'
   );
-  window.location.href = 'mailto:orders@bingdashan.com?subject=' + subject + '&body=' + body;
-  document.getElementById('successMsg').classList.add('show');
+  window.location.href='mailto:orders@bingdashan.com?subject='+subject+'&body='+body;
 }
 </script>
 </body>

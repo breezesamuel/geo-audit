@@ -33,6 +33,9 @@
   .btn-primary:hover { filter: brightness(1.1); }
   .btn-dl { background: transparent; color: var(--text); border: 1px solid var(--border); }
   .btn-dl:hover { border-color: var(--accent); color: var(--accent); }
+  .card-deliver { margin-top: 14px; padding: 10px 12px; background: rgba(0,0,0,.03); border-radius: 8px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .card-deliver label { font-size: .8rem; opacity: .7; }
+  .card-deliver input { font-size: .85rem; }
   .card-note { margin-top: 12px; font-size: .78rem; color: var(--muted); text-align: center; }
   .meta-section { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
   .meta-section h3 { font-size: 1rem; margin-bottom: 10px; }
@@ -68,6 +71,13 @@
         <button class="btn btn-primary" onclick="buyAsset('basic', this)">立即购买</button>
         <a class="btn btn-dl" href="https://breezesamuel.github.io/geo-audit/data/shop/basic_1000.json" target="_blank" rel="noopener">↓ 获取数据文件</a>
       </div>
+      <div class="card-deliver">
+        <label>📥 交付（付款后输订单号取下载链接）</label>
+        
+        <input type="text" id="deliver-order-basic" placeholder="G1-basic-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
+        basic/standard 已托管 Pages，直接下载；pro 按需生成
+        <button class="btn btn-dl" onclick="deliverAsset('basic', this)">取下载链接</button>
+      </div>
       <div class="card-note">下单后可直接获取（Pages 已托管） · 支付宝扫码付款</div>
     </div>
 
@@ -85,6 +95,13 @@
       <div class="card-actions">
         <button class="btn btn-primary" onclick="buyAsset('standard', this)">立即购买</button>
         <a class="btn btn-dl" href="https://breezesamuel.github.io/geo-audit/data/shop/standard_10000.json" target="_blank" rel="noopener">↓ 获取数据文件</a>
+      </div>
+      <div class="card-deliver">
+        <label>📥 交付（付款后输订单号取下载链接）</label>
+        
+        <input type="text" id="deliver-order-standard" placeholder="G1-standard-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
+        basic/standard 已托管 Pages，直接下载；pro 按需生成
+        <button class="btn btn-dl" onclick="deliverAsset('standard', this)">取下载链接</button>
       </div>
       <div class="card-note">下单后可直接获取（Pages 已托管） · 支付宝扫码付款</div>
     </div>
@@ -104,6 +121,13 @@
         <button class="btn btn-primary" onclick="buyAsset('pro', this)">立即购买</button>
         <a class="btn btn-dl" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E4%B8%93%E4%B8%9A%E5%8C%85-PRO%C2%A5999.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E4%B8%93%E4%B8%9A%E5%8C%85%20%28PRO%29%20%E2%80%94%20pro_uscc.json%0A%E6%9D%A1%E6%95%B0%EF%BC%9A46%2C277%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A5999%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank" rel="noopener">↓ 申请获取（按需生成）</a>
       </div>
+      <div class="card-deliver">
+        <label>📥 交付（付款后输订单号取下载链接）</label>
+        
+        <input type="text" id="deliver-order-pro" placeholder="G1-pro-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
+        按需生成：付款后运行 make_credit_report.py / make_supplier_sku.py，交付 JSON
+        <button class="btn btn-dl" onclick="deliverAsset('pro', this)">取下载链接</button>
+      </div>
       <div class="card-note">31MB 全量包，付款后按需生成并交付 · 支付宝扫码付款</div>
     </div>
 
@@ -122,6 +146,13 @@
         <button class="btn btn-primary" onclick="buyAsset('credit_report', this)">立即购买</button>
         <a class="btn btn-dl" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E4%BC%81%E4%B8%9A%E5%BE%81%E4%BF%A1%E6%8A%A5%E5%91%8A-CREDIT_REPORT%C2%A52999.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E4%BC%81%E4%B8%9A%E5%BE%81%E4%BF%A1%E6%8A%A5%E5%91%8A%20%28CREDIT_REPORT%29%20%E2%80%94%20credit_report%0A%E6%9D%A1%E6%95%B0%EF%BC%9A0%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A52999%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank" rel="noopener">↓ 申请生成（提供 USCC）</a>
       </div>
+      <div class="card-deliver">
+        <label>📥 交付（付款后输订单号取下载链接）</label>
+        <label style="font-size:.8rem">USCC</label> <input type="text" id="deliver-uscc-credit_report" placeholder="18位统一社会信用代码" style="width:220px;padding:6px;border:1px solid var(--border);border-radius:6px">
+        <input type="text" id="deliver-order-credit_report" placeholder="G1-credit_report-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
+        按需生成：付款后运行 make_credit_report.py / make_supplier_sku.py，交付 JSON
+        <button class="btn btn-dl" onclick="deliverAsset('credit_report', this)">取下载链接</button>
+      </div>
       <div class="card-note">提供 USCC 后，运行 make_credit_report.py 生成 JSON 并交付 · 支付宝扫码付款</div>
     </div>
 
@@ -139,6 +170,13 @@
       <div class="card-actions">
         <button class="btn btn-primary" onclick="buyAsset('supplier_top100', this)">立即购买</button>
         <a class="btn btn-dl" href="mailto:orders@example.com?subject=%E8%AE%A2%E5%8D%95-%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9B%20Top100-SUPPLIER_TOP100%C2%A54999.0&body=%E3%80%90%E8%AE%A2%E5%8D%95%E7%94%B3%E8%AF%B7%E3%80%91%0A%E5%95%86%E5%93%81%EF%BC%9A%E4%BE%9B%E5%BA%94%E5%95%86%E7%AB%9E%E4%BA%89%E5%8A%9B%20Top100%20%28SUPPLIER_TOP100%29%20%E2%80%94%20supplier_top100%0A%E6%9D%A1%E6%95%B0%EF%BC%9A100%20%E6%9D%A1%0A%E4%BB%B7%E6%A0%BC%EF%BC%9A%C2%A54999%0A%E8%B4%AD%E4%B9%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%94%AF%E4%BB%98%E5%AE%9D%E6%89%AB%E7%A0%81%EF%BC%88%E4%BB%98%E6%AC%BE%E5%90%8E%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%A4%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%89%0A%E4%BA%A4%E4%BB%98%EF%BC%9A%E4%BB%98%E6%AC%BE%E7%A1%AE%E8%AE%A4%E5%90%8E%E5%B0%86%E9%80%9A%E8%BF%87%20/api/deliver%20%E7%94%9F%E6%88%90%2024h%20%E6%9C%89%E6%95%88%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%0A%E6%8E%88%E6%9D%83%E6%9D%A1%E6%AC%BE%EF%BC%9A%E4%BB%85%E9%99%90%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%A6%81%E6%AD%A2%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%94%AE%0A%0A%E8%AF%B7%E9%99%84%E4%B8%8A%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE%20/%20%E6%B5%81%E6%B0%B4%E5%8F%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%9C%A8%201%20%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%A4%E4%BB%98%E3%80%82" target="_blank" rel="noopener">↓ 申请获取（企业竞争力报告）</a>
+      </div>
+      <div class="card-deliver">
+        <label>📥 交付（付款后输订单号取下载链接）</label>
+        
+        <input type="text" id="deliver-order-supplier_top100" placeholder="G1-supplier_top100-…（点立即购买自动生成）" style="width:200px;padding:6px;border:1px solid var(--border);border-radius:6px">
+        按需生成：付款后运行 make_credit_report.py / make_supplier_sku.py，交付 JSON
+        <button class="btn btn-dl" onclick="deliverAsset('supplier_top100', this)">取下载链接</button>
       </div>
       <div class="card-note">make_supplier_sku.py 已预生成全量 Top100，付款后交付 JSON · 支付宝扫码付款</div>
     </div>
@@ -190,10 +228,14 @@ async function buyAsset(assetId, btn) {
     if (d.pay_url) {
       window.open(d.pay_url, "_blank", "width=760,height=620");
       if (el) { el.disabled = false; el.textContent = "立即购买"; }
-      alert("订单号 " + d.out_trade_no + "
-金额 ¥" + d.amount_cny + "
+      // 提示付款后到下方「交付」区输订单号取下载链接
+      alert("订单号：" + d.out_trade_no + "
+金额：¥" + d.amount_cny + "
 请在新窗口支付宝扫码付款。
-付款后到 " + API_BASE + "/api/deliver 输订单号取下载链接。");
+付款后到下方【交付】区输订单号取下载链接。");
+      // 自动填入订单号到交付输入框
+      var inp = document.getElementById("deliver-order-" + assetId);
+      if (inp) inp.value = d.out_trade_no;
     } else {
       if (el) { el.disabled = false; el.textContent = "立即购买"; }
       alert("未生成 pay_url（收款 API 未配密钥？）
@@ -202,8 +244,39 @@ async function buyAsset(assetId, btn) {
   } catch (e) {
     if (el) { el.disabled = false; el.textContent = "立即购买"; }
     alert("下单失败：" + e.message + "
-请检查网络或稍后重试。
-也可邮件订单到 orders@example.com");
+请检查网络或稍后重试。");
+  }
+}
+// 交付：付款后输订单号 → POST /api/deliver → 拿 24h 下载链接
+async function deliverAsset(assetId, btn) {
+  var el = btn ? btn : null;
+  var inp = document.getElementById("deliver-order-" + assetId);
+  var orderNo = inp ? inp.value.trim() : "";
+  if (!orderNo) { alert("请先输入订单号（点「立即购买」自动生成，或手动输入 G1-...）"); return; }
+  if (el) { el.disabled = true; el.textContent = "生成下载链接…"; }
+  try {
+    var body = { out_trade_no: orderNo, asset_id: assetId };
+    if (assetId === "credit_report") {
+      var usccInp = document.getElementById("deliver-uscc-" + assetId);
+      body.uscc = usccInp ? usccInp.value.trim() : "";
+    }
+    var r = await fetch(API_BASE + "/api/deliver", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    var d = await r.json();
+    if (!d.ok) throw new Error(d.error || "unknown");
+    // 弹出下载链接
+    window.open(d.signed_url || d.download_url, "_blank");
+    alert("下载链接已生成（24h 有效）
+" + (d.signed_url || d.download_url) + "
+" + d.note);
+  } catch (e) {
+    alert("交付失败：" + e.message + "
+请确认订单号正确（格式 G1-{asset}-{时间}-{随机}）。");
+  } finally {
+    if (el) { el.disabled = false; el.textContent = "取下载链接"; }
   }
 }
 </script>

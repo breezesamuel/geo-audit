@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>鏁版嵁鏂囦欢瑙ｅ瘑宸ュ叿 - 涓欏ぇ灞辨暟鎹?/title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif;background:#f5f7fa;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{background:#fff;border-radius:20px;padding:32px;max-width:520px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.icon{font-size:48px;text-align:center}
+h1{font-size:20px;text-align:center;margin:10px 0 4px;color:#1a1a1a}
+.sub{font-size:13px;color:#888;text-align:center;margin-bottom:18px}
+.drop{border:2px dashed #1677ff;border-radius:14px;padding:28px;text-align:center;color:#1677ff;font-size:14px;cursor:pointer;background:#f0f7ff;transition:background .2s}
+.drop.over{background:#e0efff}
+.drop input{display:none}
+.file-name{font-size:13px;color:#333;margin:10px 2px 0;word-break:break-all}
+textarea{width:100%;height:74px;border:1.5px solid #d9d9d9;border-radius:12px;padding:12px;font-family:ui-monospace,Menlo,monospace;font-size:13px;margin:14px 0 0;resize:vertical}
+textarea:focus{outline:none;border-color:#1677ff}
+.btn{display:block;width:100%;padding:15px;background:#1677ff;color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin:14px 0 0}
+.btn:disabled{background:#bcd4f5;cursor:not-allowed}
+.status{font-size:13px;line-height:1.8;margin-top:14px;white-space:pre-wrap;word-break:break-all}
+.ok{color:#237804}.err{color:#cf1322}
+.foot{font-size:11px;color:#aaa;text-align:center;margin-top:18px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">馃敁</div>
+  <h1>鏁版嵁鏂囦欢瑙ｅ瘑宸ュ叿</h1>
+  <div class="sub">涓欏ぇ灞辨暟鎹祫浜?路 娴忚鍣ㄥ唴瑙ｅ瘑 路 鏂囦欢涓嶄笂浼犲埌浠讳綍鏈嶅姟鍣?/div>
+
+  <label class="drop" id="dropZone">
+    <div>馃搨 鐐瑰嚮閫夋嫨 鎴?鎷栧叆 .enc 鏂囦欢</div>
+    <input type="file" id="fileInput" accept=".enc"/>
+  </label>
+  <div class="file-name" id="fileName"></div>
+
+  <textarea id="keyInput" placeholder="绮樿创閭欢涓殑瑙ｅ瘑瀵嗛挜锛坆ase64锛?4涓瓧绗︼級"></textarea>
+  <button class="btn" id="decryptBtn" disabled>瑙ｅ瘑骞朵笅杞?/button>
+
+  <div class="status" id="status"></div>
+  <div class="foot">瑙ｅ瘑瀹屽叏鍦ㄦ偍鐨勬祻瑙堝櫒鏈湴瀹屾垚锛圓ES-256-GCM锛夈€?br>瀵嗛挜瑙佹偍浠樻鎴愬姛鍚庢敹鍒扮殑閭欢銆?/div>
+</div>
+
+<script>
+(function () {
+  var file = null;
+  var fileInput = document.getElementById('fileInput');
+  var dropZone  = document.getElementById('dropZone');
+  var fileName  = document.getElementById('fileName');
+  var keyInput  = document.getElementById('keyInput');
+  var decryptBtn= document.getElementById('decryptBtn');
+  var status    = document.getElementById('status');
+
+  function setStatus(msg, cls) { status.textContent = msg; status.className = 'status ' + (cls || ''); }
+  function updateBtn() { decryptBtn.disabled = !(file && keyInput.value.trim().length >= 20); }
+
+  fileInput.addEventListener('change', function (e) {
+    file = e.target.files[0] || null;
+    fileName.textContent = file ? ('宸查€夋嫨锛? + file.name) : '';
+    updateBtn();
+  });
+  dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('over'); });
+  dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('over'); });
+  dropZone.addEventListener('drop', function (e) {
+    e.preventDefault(); dropZone.classList.remove('over');
+    file = (e.dataTransfer.files || [])[0] || null;
+    fileName.textContent = file ? ('宸查€夋嫨锛? + file.name) : '';
+    updateBtn();
+  });
+  keyInput.addEventListener('input', updateBtn);
+
+  function b64ToBytes(b64) {
+    var bin = atob(b64.trim());
+    var out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  decryptBtn.addEventListener('click', async function () {
+    decryptBtn.disabled = true;
+    setStatus('姝ｅ湪瑙ｅ瘑鈥?, '');
+    try {
+      var keyBytes = b64ToBytes(keyInput.value);
+      if (keyBytes.length !== 32) throw new Error('瀵嗛挜闀垮害閿欒锛堝簲涓?2瀛楄妭base64锛夛紝璇锋鏌ユ槸鍚﹀畬鏁村鍒?);
+      var buf = new Uint8Array(await file.arrayBuffer());
+      if (buf.length < 12 + 16 + 1) throw new Error('鏂囦欢澶皬锛屼笉鏄湁鏁堢殑 .enc 鏂囦欢');
+      var iv = buf.slice(0, 12), data = buf.slice(12);
+      var key = await crypto.subtle.importKey('raw', keyBytes, { name: 'AES-GCM' }, false, ['decrypt']);
+      var plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, key, data);
+      var outName = file.name.replace(/\.enc$/, '') || 'decrypted.json';
+      var blob = new Blob([plain]);
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = outName;
+      a.click();
+      URL.revokeObjectURL(a.href);
+      setStatus('瑙ｅ瘑鎴愬姛锛佹枃浠跺凡涓嬭浇锛? + outName + '\n澶у皬锛? + (plain.byteLength / 1024).toFixed(1) + ' KB', 'ok');
+    } catch (e) {
+      setStatus('瑙ｅ瘑澶辫触锛? + (e && e.message ? e.message : String(e)) + '\n璇风‘璁ゅ瘑閽ユ槸鍚︿负鏈晢鍝佸搴旂殑瀵嗛挜锛堜笉鍚屽晢鍝佸瘑閽ヤ笉鍚岋級銆?, 'err');
+    } finally {
+      updateBtn();
+    }
+  });
+})();
+</script>
+</body>
+</html>

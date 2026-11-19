@@ -3,28 +3,35 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>安全支付 - 标准数据包</title>
+<meta name="robots" content="noindex"/>
+<title>支付宝收款 - 标准数据包</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f7fa;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.container{background:#fff;border-radius:20px;padding:35px;max-width:500px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.08)}
-.header{text-align:center;margin-bottom:25px}
-.icon{font-size:56px;margin-bottom:12px}
-h1{font-size:24px;color:#1a1a1a;margin-bottom:8px}
-.price-box{background:linear-gradient(135deg,#ff6b00,#ff8f00);color:#fff;padding:30px;border-radius:16px;text-align:center;margin:25px 0}
-.price{font-size:52px;font-weight:bold}
-.unit{font-size:18px;opacity:.9}
-.order-info{background:#f8f9fa;border-radius:12px;padding:18px;margin:20px 0;border:1px solid #e9ecef}
-.order-no{font-size:18px;color:#ff6b00;font-weight:bold;font-family:monospace}
-.steps{margin:25px 0}
-.step{display:flex;align-items:flex-start;margin:14px 0}
-.step-num{width:28px;height:28px;border-radius:50%;background:#ff6b00;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-right:12px;flex-shrink:0;font-size:13px}
-.step-text{font-size:15px;color:#333;line-height:1.5}
-.btn-pay{display:block;width:100%;padding:16px;background:#ff6b00;color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer;margin:20px 0;text-decoration:none;text-align:center}
-.btn-pay:hover{background:#e55a00}
-.btn-email{display:block;width:100%;padding:14px;background:#fff;color:#ff6b00;border:2px solid #ff6b00;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin:10px 0;text-decoration:none;text-align:center}
-.trust{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:18px;margin:20px 0;font-size:14px;color:#166534}
-.footer{text-align:center;margin-top:30px;font-size:12px;color:#999;line-height:2}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif;background:#f5f7fa;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{background:#fff;border-radius:20px;padding:28px 24px;max-width:460px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.header{text-align:center;margin-bottom:16px}
+.icon{font-size:46px}
+h1{font-size:20px;color:#1a1a1a;margin-top:8px}
+.desc{font-size:13px;color:#888;margin-top:4px}
+.price-box{background:linear-gradient(135deg,#ff6b00,#ff8f00);color:#fff;padding:18px;border-radius:14px;text-align:center;margin:16px 0}
+.price{font-size:44px;font-weight:700}
+.unit{font-size:13px;opacity:.9;margin-top:4px}
+.order-info{background:#f8f9fa;border-radius:12px;padding:14px;margin:14px 0;border:1px solid #e9ecef}
+.label{font-size:12px;color:#888;margin-bottom:6px}
+.order-no{font-size:19px;color:#ff6b00;font-weight:700;font-family:ui-monospace,Menlo,monospace;letter-spacing:.5px;word-break:break-all}
+.order-hint{font-size:12px;color:#888;margin-top:6px}
+.qr{background:#fffbe6;border:1.5px dashed #ffa940;border-radius:14px;padding:16px;text-align:center;margin:14px 0}
+.qr img{width:200px;height:200px;object-fit:contain}
+.qr p{font-size:13px;color:#874d0f;margin-top:10px;line-height:1.7}
+.steps{margin:14px 0}
+.step{display:flex;align-items:flex-start;margin:10px 0;font-size:14px;color:#333;line-height:1.6}
+.step-num{width:22px;height:22px;border-radius:50%;background:#1677ff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-right:10px;flex-shrink:0;font-size:12px}
+.btn{display:block;width:100%;padding:15px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin:10px 0;border:none;text-decoration:none;text-align:center}
+.btn-email{background:#1677ff;color:#fff}
+.btn-copy{background:#fff;color:#333;border:1.5px solid #d9d9d9;font-size:13px;padding:10px}
+.warn{background:#fff2f0;border:1px solid #ffccc7;border-radius:12px;padding:12px;font-size:12px;color:#a8071a;margin:12px 0;line-height:1.7}
+.footer{text-align:center;margin-top:16px;font-size:11px;color:#aaa;line-height:1.9}
+.footer a{color:#1677ff;text-decoration:none}
 </style>
 </head>
 <body>
@@ -32,46 +39,100 @@ h1{font-size:24px;color:#1a1a1a;margin-bottom:8px}
   <div class="header">
     <div class="icon">🔒</div>
     <h1>标准数据包</h1>
+    <div class="desc">10,000条全行业中标公告</div>
   </div>
-  
+
   <div class="price-box">
     <div class="price">¥99.0</div>
     <div class="unit">一次性购买 · 永久下载</div>
   </div>
-  
+
   <div class="order-info">
-    <div style="font-size:13px;color:#666;margin-bottom:8px">您的订单号（付款后发给客服）：</div>
-    <div class="order-no">BD-20261118233311-54C065</div>
-    <div style="margin-top:10px;font-size:13px;color:#666">商品：标准数据包 | 金额：¥99.0</div>
+    <div class="label">您的订单号（付款时务必填入「备注」）：</div>
+    <div class="order-no" id="ono">—</div>
+    <button class="btn btn-copy" id="copyBtn" type="button">📋 复制订单号</button>
+    <div class="order-hint">订单号唯一，用于匹配您的付款与发货</div>
   </div>
-  
+
+<div class="warn">⚠️ 店主尚未配置收款邮箱（仍是占位符）。本页邮件确认链接暂不可用，请先在 config_live.json 中设置 RECEIVER_EMAIL。</div>
+
+  <div class="qr" id="qrBox">
+    <img id="qrImg" alt="支付宝收钱码" src="alipay-qr.png" />
+    <p>手机打开<strong>支付宝 → 扫一扫</strong>，扫描上方收款码，<br/>输入金额 <strong>¥99.0</strong>，备注填写：<br/><strong id="noteEcho">订单号</strong></p>
+  </div>
+
   <div class="steps">
-    <h3 style="margin-bottom:15px;font-size:16px">💳 支付方式：</h3>
-    <div class="step"><div class="step-num">1</div><div class="step-text">点击下方按钮<strong>打开支付宝</strong></div></div>
-    <div class="step"><div class="step-num">2</div><div class="step-text">输入金额 <strong>¥99.0</strong> 完成付款</div></div>
-    <div class="step"><div class="step-num">3</div><div class="step-text">付款成功后点击「我已付款」发送邮件确认</div></div>
-    <div class="step"><div class="step-num">4</div><div class="step-text">30分钟内发送数据下载链接到你的邮箱</div></div>
+    <div class="step"><div class="step-num">1</div><div>用支付宝扫码支付 <strong>¥99.0</strong>，备注填入上方订单号</div></div>
+    <div class="step"><div class="step-num">2</div><div>点击下方「我已付款」发送邮件确认</div></div>
+    <div class="step"><div class="step-num">3</div><div>核验到账后将在30分钟内发送下载链接到您的邮箱</div></div>
   </div>
-  
-  <a class="btn-pay" href="alipays://platformapi/startapp?appId=2021004132641258&subject=标准数据包&total_amount=99.0&out_trade_no=BD-20261118233311-54C065">
-    🔗 打开支付宝立即付款 ¥99.0
-  </a>
-  
-  <a class="btn-email" href="mailto:YOUR_REAL_EMAIL@gmail.com?subject=付款确认-BD-20261118233311-54C065&body=我已付款%2C订单号%3ABD-20261118233311-54C065%0D%0A商品%3A标准数据包%0D%0A金额%3A%E%A699.0%0D%0A请发送下载链接到我的邮箱。">
-    ✅ 我已付款，发送邮件确认
-  </a>
-  
-  <div class="trust">
-    ✅ 付款后30分钟内未收到数据，全额退款<br>
-    ✅ 数据来源：全国公共资源交易平台30省+CCGP等公开源<br>
-    ✅ 授权范围：仅限个人研究使用，禁止二次转售
-  </div>
-  
+
+  <a class="btn btn-email" id="mailBtn" href="#">✅ 我已付款，发送邮件确认</a>
+
   <div class="footer">
-    丙大山数据资产平台<br>
-    联系邮箱：<a href="mailto:YOUR_REAL_EMAIL@gmail.com" style="color:#ff6b00">YOUR_REAL_EMAIL@gmail.com</a><br>
-    支付宝商家ID：2021004132641258
+    丙大山数据资产平台<br/>
+    联系邮箱：<a href="mailto:YOUR_REAL_EMAIL@gmail.com" id="mailLink">YOUR_REAL_EMAIL@gmail.com</a>
   </div>
 </div>
+
+<script>
+(function () {
+  var product = "standard";
+  var name = "标准数据包";
+  var price = "99.0";
+  var email = "YOUR_REAL_EMAIL@gmail.com";
+  var KEY = "bd_order_" + product;
+
+  function pad(n){ return n < 10 ? "0" + n : "" + n; }
+  function gen() {
+    var d = new Date();
+    var stamp = d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + pad(d.getHours()) + pad(d.getMinutes());
+    var rand = Math.random().toString(36).slice(2, 8).toUpperCase();
+    return "BD-" + stamp + "-" + rand;
+  }
+  function getOrder() {
+    try {
+      var s = localStorage.getItem(KEY);
+      if (s) return s;
+      var o = gen();
+      localStorage.setItem(KEY, o);
+      return o;
+    } catch (e) {
+      return gen();
+    }
+  }
+  var orderNo = getOrder();
+  document.getElementById("ono").textContent = orderNo;
+  document.getElementById("noteEcho").textContent = orderNo;
+
+  var subject = "付款确认-" + orderNo;
+  var body = "我已付款\n订单号：" + orderNo + "\n商品：" + name + "\n金额：¥" + price +
+             "\n备注：已按订单号在支付宝备注\n请将数据下载链接发送至本邮箱。";
+  var mailBtn = document.getElementById("mailBtn");
+  mailBtn.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject) +
+                 "&body=" + encodeURIComponent(body);
+
+  var copyBtn = document.getElementById("copyBtn");
+  copyBtn.addEventListener("click", function () {
+    var done = function(){ copyBtn.textContent = "✅ 已复制：" + orderNo; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(orderNo).then(done, done);
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = orderNo; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta); done();
+    }
+  });
+
+  // 收款码图片加载失败 → 明确提示，而不是显示破图
+  var img = document.getElementById("qrImg");
+  img.addEventListener("error", function () {
+    document.getElementById("qrBox").innerHTML =
+      '<p style="color:#a8071a;font-size:14px;line-height:1.8">⚠️ 收款码图片未上传到服务器<br>' +
+      '（alipay-qr.png）<br>请联系客服：' + email + '</p>';
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,13 +1,138 @@
 <!DOCTYPE html>
-<html lang='zh-CN'>
+<html lang="zh-CN">
 <head>
-<meta charset='utf-8'/>
-<meta name='viewport' content='width=device-width,initial-scale=1'/>
-<meta http-equiv='refresh' content='0;url=https://data.highkingflower.com/product/supplier_top100'/>
-<title>前往支付宝支付…</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex"/>
+<title>支付宝收款 - 竞争力Top100</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif;background:#f5f7fa;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{background:#fff;border-radius:20px;padding:28px 24px;max-width:460px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.header{text-align:center;margin-bottom:16px}
+.icon{font-size:46px}
+h1{font-size:20px;color:#1a1a1a;margin-top:8px}
+.desc{font-size:13px;color:#888;margin-top:4px}
+.price-box{background:linear-gradient(135deg,#ff6b00,#ff8f00);color:#fff;padding:18px;border-radius:14px;text-align:center;margin:16px 0}
+.price{font-size:44px;font-weight:700}
+.unit{font-size:13px;opacity:.9;margin-top:4px}
+.order-info{background:#f8f9fa;border-radius:12px;padding:14px;margin:14px 0;border:1px solid #e9ecef}
+.label{font-size:12px;color:#888;margin-bottom:6px}
+.order-no{font-size:19px;color:#ff6b00;font-weight:700;font-family:ui-monospace,Menlo,monospace;letter-spacing:.5px;word-break:break-all}
+.order-hint{font-size:12px;color:#888;margin-top:6px}
+.qr{background:#fffbe6;border:1.5px dashed #ffa940;border-radius:14px;padding:16px;text-align:center;margin:14px 0}
+.qr img{width:200px;height:200px;object-fit:contain}
+.qr p{font-size:13px;color:#874d0f;margin-top:10px;line-height:1.7}
+.steps{margin:14px 0}
+.step{display:flex;align-items:flex-start;margin:10px 0;font-size:14px;color:#333;line-height:1.6}
+.step-num{width:22px;height:22px;border-radius:50%;background:#1677ff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-right:10px;flex-shrink:0;font-size:12px}
+.btn{display:block;width:100%;padding:15px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin:10px 0;border:none;text-decoration:none;text-align:center}
+.btn-email{background:#1677ff;color:#fff}
+.btn-copy{background:#fff;color:#333;border:1.5px solid #d9d9d9;font-size:13px;padding:10px}
+.warn{background:#fff2f0;border:1px solid #ffccc7;border-radius:12px;padding:12px;font-size:12px;color:#a8071a;margin:12px 0;line-height:1.7}
+.footer{text-align:center;margin-top:16px;font-size:11px;color:#aaa;line-height:1.9}
+.footer a{color:#1677ff;text-decoration:none}
+</style>
 </head>
 <body>
-<p>正在前往安全收银台…</p>
-<p><a href='https://data.highkingflower.com/product/supplier_top100'>如果没有自动跳转，请点击这里</a></p>
+<div class="container">
+  <div class="header">
+    <div class="icon">🔒</div>
+    <h1>竞争力Top100</h1>
+    <div class="desc">跨省重复中标企业排行榜</div>
+  </div>
+
+  <div class="price-box">
+    <div class="price">¥4999.0</div>
+    <div class="unit">一次性购买 · 永久下载</div>
+  </div>
+
+  <div class="order-info">
+    <div class="label">您的订单号（付款时务必填入「备注」）：</div>
+    <div class="order-no" id="ono">—</div>
+    <button class="btn btn-copy" id="copyBtn" type="button">📋 复制订单号</button>
+    <div class="order-hint">订单号唯一，用于匹配您的付款与发货</div>
+  </div>
+
+
+
+  <div class="qr" id="qrBox">
+    <img id="qrImg" alt="支付宝收钱码" src="alipay-qr.png" />
+    <p>手机打开<strong>支付宝 → 扫一扫</strong>，扫描上方收款码，<br/>输入金额 <strong>¥4999.0</strong>，备注填写：<br/><strong id="noteEcho">订单号</strong></p>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div>用支付宝扫码支付 <strong>¥4999.0</strong>，备注填入上方订单号</div></div>
+    <div class="step"><div class="step-num">2</div><div>点击下方「我已付款」发送邮件确认</div></div>
+    <div class="step"><div class="step-num">3</div><div>核验到账后将在30分钟内发送下载链接到您的邮箱</div></div>
+  </div>
+
+  <a class="btn btn-email" id="mailBtn" href="#">✅ 我已付款，发送邮件确认</a>
+
+  <div class="footer">
+    丙大山数据资产平台<br/>
+    联系邮箱：<a href="mailto:460123249@qq.com" id="mailLink">460123249@qq.com</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  var product = "supplier_top100";
+  var name = "竞争力Top100";
+  var price = "4999.0";
+  var email = "460123249@qq.com";
+  var KEY = "bd_order_" + product;
+
+  function pad(n){ return n < 10 ? "0" + n : "" + n; }
+  function gen() {
+    var d = new Date();
+    var stamp = d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + pad(d.getHours()) + pad(d.getMinutes());
+    var rand = Math.random().toString(36).slice(2, 8).toUpperCase();
+    return "BD-" + stamp + "-" + rand;
+  }
+  function getOrder() {
+    try {
+      var s = localStorage.getItem(KEY);
+      if (s) return s;
+      var o = gen();
+      localStorage.setItem(KEY, o);
+      return o;
+    } catch (e) {
+      return gen();
+    }
+  }
+  var orderNo = getOrder();
+  document.getElementById("ono").textContent = orderNo;
+  document.getElementById("noteEcho").textContent = orderNo;
+
+  var subject = "付款确认-" + orderNo;
+  var body = "我已付款\n订单号：" + orderNo + "\n商品：" + name + "\n金额：¥" + price +
+             "\n备注：已按订单号在支付宝备注\n请将数据下载链接发送至本邮箱。";
+  var mailBtn = document.getElementById("mailBtn");
+  mailBtn.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject) +
+                 "&body=" + encodeURIComponent(body);
+
+  var copyBtn = document.getElementById("copyBtn");
+  copyBtn.addEventListener("click", function () {
+    var done = function(){ copyBtn.textContent = "✅ 已复制：" + orderNo; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(orderNo).then(done, done);
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = orderNo; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta); done();
+    }
+  });
+
+  // 收款码图片加载失败 → 明确提示，而不是显示破图
+  var img = document.getElementById("qrImg");
+  img.addEventListener("error", function () {
+    document.getElementById("qrBox").innerHTML =
+      '<p style="color:#a8071a;font-size:14px;line-height:1.8">⚠️ 收款码图片未上传到服务器<br>' +
+      '（alipay-qr.png）<br>请联系客服：' + email + '</p>';
+  });
+})();
+</script>
 </body>
 </html>
